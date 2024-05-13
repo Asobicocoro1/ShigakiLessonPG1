@@ -30,12 +30,13 @@ stringは文字や文章を保存するためのデータ型です。
 
 public class Operation : MonoBehaviour
 {
-    int age = 10;  // 「int」は整数を入れる箱、「age」は変数名、10は入れる数
-    string name = "ハル";  // 「string」は文字を入れる箱、「name」は変数名、"ハル"は入れる文字
-
+    private int age = 10;  // 「int」は整数を入れる箱、「age」は変数名、10は入れる数
+    private string nameimg = "ハル";  // 「string」は文字を入れる箱、「name」は変数名、"ハル"は入れる文字
     // Start is called before the first frame update
     void Start()
     {
+        
+
         //ここでは、favoriteFoodという変数に"アイスクリーム"という文字列を保存し、それを表示しています。
         string favoriteFood = "アイスクリーム";
         Debug.Log("私の好きな食べ物は " + favoriteFood + " です。");
@@ -73,8 +74,6 @@ public class Operation : MonoBehaviour
     //これにより、プログラムがより動的で有用なものになります。
     //小学生でも、これらの基本的な演算が理解できれば、プログラミングで遊びながら学ぶことが楽しくなるでしょう！
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
+
 }
