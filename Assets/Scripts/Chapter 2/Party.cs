@@ -1,27 +1,27 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /*
- ����
-�f���Q�[�g�ƃC�x���g�̐錾�F����́A�C�x���g���ǂ�ȂƂ��Ɏg���邩�̃��[������镔���ł��B
-�C�x���g�̔��΁F����́A���D�����ꂽ�Ƃ����u�j���[�X�v�𑼂̃v���O�����̕����ɓ`���邽�߂ɁA�C�x���g���N���������ł��B
-�C�x���g�Ƀ��\�b�h��o�^�F����́A�C�x���g���N�����Ƃ��ɉ������邩���v���O�����ɋ����镔���ł��B
-                          �����ł́uAnnounce�v�Ƃ������\�b�h���C�x���g�ɔ������܂��B
-�C�x���g�����������Ƃ��Ɏ��s����郁�\�b�h�F���D�����ꂽ�Ƃ��ɁA�u���D������܂����I�F�A�����Ȃ��łˁI�v�ƕ\�����郁�\�b�h�ł��B
-���̂悤�ɃC�x���g���g�����ƂŁA�v���O�����̈ꕔ�����̕����Ɂu�������ʂȂ��Ƃ��N��������v�Ƌ����邱�Ƃ��ł��܂��B
-����𕷂������̕����́A���߂�ꂽ���������܂��B���ꂪ�v���O���~���O�ł̃C�x���g�̊�{�I�Ȏg�����ł��B
+ 説明
+デリゲートとイベントの宣言：これは、イベントがどんなときに使われるかのルールを作る部分です。
+イベントの発火：これは、風船が割れたという「ニュース」を他のプログラムの部分に伝えるために、イベントを起こす部分です。
+イベントにメソッドを登録：これは、イベントが起きたときに何をするかをプログラムに教える部分です。
+                          ここでは「Announce」というメソッドがイベントに反応します。
+イベントが発生したときに実行されるメソッド：風船が割れたときに、「風船が割れました！皆、驚かないでね！」と表示するメソッドです。
+このようにイベントを使うことで、プログラムの一部が他の部分に「何か特別なことが起こったよ」と教えることができます。
+それを聞いた他の部分は、決められた反応をします。これがプログラミングでのイベントの基本的な使い方です。
  */
 
 public class Party : MonoBehaviour
 {
-    // �f���Q�[�g�ƃC�x���g�̐錾
+    // デリゲートとイベントの宣言
     public delegate void BalloonPoppedAction();
     public event BalloonPoppedAction OnBalloonPopped;
 
     void Start()
     {
-        // �C�x���g�𔭉΂�����i���D�����ꂽ���Ƃ�m�点��j
+        // イベントを発火させる（風船が割れたことを知らせる）
         if (OnBalloonPopped != null)
         {
             OnBalloonPopped();
@@ -30,19 +30,19 @@ public class Party : MonoBehaviour
 
     void OnEnable()
     {
-        // �C�x���g�Ƀ��\�b�h��o�^
+        // イベントにメソッドを登録
         OnBalloonPopped += Announce;
     }
 
     void OnDisable()
     {
-        // �C�x���g���烁�\�b�h���폜
+        // イベントからメソッドを削除
         OnBalloonPopped -= Announce;
     }
 
-    // �C�x���g�����������Ƃ��Ɏ��s����郁�\�b�h
+    // イベントが発生したときに実行されるメソッド
     void Announce()
     {
-        Debug.Log("���D������܂����I�F�A�����Ȃ��łˁI");
+        Debug.Log("風船が割れました！皆、驚かないでね！");
     }
 }

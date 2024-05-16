@@ -1,33 +1,33 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*�A�N�Z�X�C���q
+/*アクセス修飾子
 1. public
-public �C���q�́A�ǂ̃N���X����ł��A�N�Z�X�\�ȃ����o�[���`���܂��B
-����͍ł������̂Ȃ��A�N�Z�X���x���ŁA�v���O�����̂ǂ̕�������ł����R�ɃA�N�Z�X�ł��܂��B
+public 修飾子は、どのクラスからでもアクセス可能なメンバーを定義します。
+これは最も制限のないアクセスレベルで、プログラムのどの部分からでも自由にアクセスできます。
 
 2. private
-private �C���q�́A���̃����o�[����`����Ă���N���X������̂݃A�N�Z�X�\�ł��邱�Ƃ��w�肵�܂��B
-����͍ł������I�ȃA�N�Z�X���x���ŁA�N���X�̊O������͂��̃����o�[�ւ̃A�N�Z�X�����S�ɉB����܂��B
+private 修飾子は、そのメンバーが定義されているクラス内からのみアクセス可能であることを指定します。
+これは最も制限的なアクセスレベルで、クラスの外部からはそのメンバーへのアクセスが完全に隠されます。
 
 3. protected
-protected �C���q�́A���̃����o�[����`����Ă���N���X���g�ƁA���̃N���X���p�������h���N���X����A�N�Z�X�\�ł��邱�Ƃ��w�肵�܂��B
-����̓N���X�̌p���\�����ł̂݃A�N�Z�X�������钆�ԓI�ȃA�N�Z�X���x���ł��B
+protected 修飾子は、そのメンバーが定義されているクラス自身と、そのクラスを継承した派生クラスからアクセス可能であることを指定します。
+これはクラスの継承構造内でのみアクセスを許可する中間的なアクセスレベルです。
 
 4. internal
-internal �C���q�́A���̃����o�[������A�Z���u�����̂ǂ̃N���X������A�N�Z�X�\�ł��邱�Ƃ��w�肵�܂��B
-����́A����̃v���O�����⃉�C�u�������ł̂݃A�N�Z�X��������A�N�Z�X���x���ł��B
+internal 修飾子は、そのメンバーが同一アセンブリ内のどのクラスからもアクセス可能であることを指定します。
+これは、同一のプログラムやライブラリ内でのみアクセスを許可するアクセスレベルです。
 
 5. protected internal
-protected internal �C���q�́Aprotected �� internal �̋@�\��g�ݍ��킹�����̂ŁA�����o�[������A�Z���u�����ł���΂ǂ̃N���X����ł��A
-�܂��͈قȂ�A�Z���u���ł��h���N���X����̃A�N�Z�X���\�ł��邱�Ƃ��w�肵�܂��B
+protected internal 修飾子は、protected と internal の機能を組み合わせたもので、メンバーが同一アセンブリ内であればどのクラスからでも、
+または異なるアセンブリでも派生クラスからのアクセスが可能であることを指定します。
 
 6. private protected
-private protected �C���q�́A���̃����o�[����`���ꂽ�N���X���g����єh���N���X����̂݁A������A�Z���u�����ł̂݃A�N�Z�X�\�ł��邱�Ƃ��w�肵�܂��B
-�����protected��internal�̐����I�ȃo�[�W�����ł��B
+private protected 修飾子は、そのメンバーが定義されたクラス自身および派生クラスからのみ、かつ同一アセンブリ内でのみアクセス可能であることを指定します。
+これはprotectedとinternalの制限的なバージョンです。
 
-�����̃A�N�Z�X�C���q��K�؂Ɏg�p���邱�ƂŁA�\�t�g�E�F�A�̈��S���A�ێ琫�A����ъg���������サ�܂��B�e�C���q�̑I���́A���̃����o�[���ǂ̂悤�Ɏg����ׂ����Ɋ�Â��ĐT�d�ɍs���ׂ��ł��B
+これらのアクセス修飾子を適切に使用することで、ソフトウェアの安全性、保守性、および拡張性が向上します。各修飾子の選択は、そのメンバーがどのように使われるべきかに基づいて慎重に行うべきです。
 */
 
 public class Accessmodifiers : MonoBehaviour

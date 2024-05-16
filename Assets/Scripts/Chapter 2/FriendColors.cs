@@ -1,46 +1,46 @@
-using System.Collections;
-using System.Collections.Generic; // �������g�����߂ɕK�v
+﻿using System.Collections;
+using System.Collections.Generic; // 辞書を使うために必要
 using UnityEngine;
 
 /*
- ���
-!���̎����͕�����̃L�[�ƒl�������܂��B!
-�����̍쐬�FDictionary<string, string> favoriteColors = new Dictionary<string, string>(); �ŐV�������������܂��B
-�ǉ��F.Add ���\�b�h���g���āA�F�B�̖��O���L�[�Ƃ��āA����ɑΉ�����D���ȐF��l�Ƃ��Ēǉ����܂��B
-�擾�FfavoriteColors["�n��"] �̂悤�ɁA�L�[���w�肵�Ă��̒l���擾���܂��B
-�폜�F.Remove ���\�b�h���g���ē���̃L�[�i�����ł́u���~�v�j�Ƃ��̒l����������폜���܂��B
-���e�̊m�F�Fforeach ���[�v���g���Ď����̒��̂��ׂẴL�[�ƒl��\�����܂��B
+ 解説
+!この辞書は文字列のキーと値を持ちます。!
+辞書の作成：Dictionary<string, string> favoriteColors = new Dictionary<string, string>(); で新しい辞書を作ります。
+追加：.Add メソッドを使って、友達の名前をキーとして、それに対応する好きな色を値として追加します。
+取得：favoriteColors["ハル"] のように、キーを指定してその値を取得します。
+削除：.Remove メソッドを使って特定のキー（ここでは「ユミ」）とその値を辞書から削除します。
+内容の確認：foreach ループを使って辞書の中のすべてのキーと値を表示します。
 
-entry�̎g����
-foreach���[�v���g���Ď����̒��g��������Ă����Ƃ��ɁAKeyValuePair<TKey, TValue>�^�̕ϐ��Ƃ���entry���g���܂��B
-����ɂ���āA�e�G���g���̃L�[�ƒl�ɃA�N�Z�X���邱�Ƃ��ł��܂��B
+entryの使い方
+foreachループを使って辞書の中身を一つずつ見ていくときに、KeyValuePair<TKey, TValue>型の変数としてentryを使います。
+これによって、各エントリのキーと値にアクセスすることができます。
 
-�����͏��𐮗����Ă��΂₭�A�N�Z�X����̂ɂƂĂ��֗��ł��B�L�[��m���Ă���΁A���̃L�[�Ɋ֘A������������Ɍ����邱�Ƃ��ł���̂ŁA
-�v���O���~���O�ŏ����Ǘ�����Ƃ��ɖ𗧂��܂���B
+辞書は情報を整理してすばやくアクセスするのにとても便利です。キーを知っていれば、そのキーに関連する情報をすぐに見つけることができるので、
+プログラミングで情報を管理するときに役立ちますよ。
  */
 
 public class FriendColors : MonoBehaviour
 {
     void Start()
     {
-        // �V�������������
+        // 新しい辞書を作る
         Dictionary<string, string> favoriteColors = new Dictionary<string, string>();
 
-        // �����ɗF�B�̖��O�ƍD���ȐF��ǉ�����
-        favoriteColors.Add("�n��", "��");
-        favoriteColors.Add("���~", "�s���N");
-        favoriteColors.Add("�g��", "��");
+        // 辞書に友達の名前と好きな色を追加する
+        favoriteColors.Add("ハル", "青");
+        favoriteColors.Add("ユミ", "ピンク");
+        favoriteColors.Add("トモ", "緑");
 
-        // �n���̍D���ȐF��\������
-        Debug.Log("�n���̍D���ȐF�� " + favoriteColors["�n��"] + " �ł��B");
+        // ハルの好きな色を表示する
+        Debug.Log("ハルの好きな色は " + favoriteColors["ハル"] + " です。");
 
-        // ���~�̍D���ȐF����������폜����
-        favoriteColors.Remove("���~");
+        // ユミの好きな色を辞書から削除する
+        favoriteColors.Remove("ユミ");
 
-        // �����̓��e���m�F����
+        // 辞書の内容を確認する
         foreach (KeyValuePair<string, string> entry in favoriteColors)
         {
-            Debug.Log(entry.Key + "�̍D���ȐF�� " + entry.Value + " �ł��B");
+            Debug.Log(entry.Key + "の好きな色は " + entry.Value + " です。");
         }
     }
 }

@@ -1,26 +1,26 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /*
- ���̃X�N���v�g�ł́Afor ���[�v���g���āu�����S����J�S�ɓ��ꂽ��I�v�Ƃ������b�Z�[�W��5��\�����܂��B
- i < 5 �́Ai ��0����n�܂�5�����̊ԁi�܂�A0, 1, 2, 3, 4 ��5��j���[�v�𑱂���Ƃ����Ӗ��ł��B
+ このスクリプトでは、for ループを使って「リンゴを一個カゴに入れたよ！」というメッセージを5回表示します。
+ i < 5 は、i が0から始まり5未満の間（つまり、0, 1, 2, 3, 4 の5回）ループを続けるという意味です。
 
-�ق��̃p�^�[��
-i < 5�F�ui��5�����̊ԁv�J��Ԃ��Ƃ����Ӗ��ł��B�܂�Ai��0, 1, 2, 3, 4�̂Ƃ��ɓ��삵�܂��B
-i <= 5�F�ui��5�ȉ��̊ԁv�J��Ԃ��Ƃ����Ӗ��ł��Bi��0, 1, 2, 3, 4, 5�̂Ƃ��ɓ��삵�܂��B
-i > 5�F�ui��5���傫���ԁv�J��Ԃ��Ƃ����Ӗ��ł��B�������A��������[�v�̊J�n�����Ɏg���ꍇ�́Ai�̏����l��5���傫���ݒ肷��K�v������܂��B
-i >= 5�F�ui��5�ȏ�̊ԁv�J��Ԃ��Ƃ����Ӗ��ł��B���̏������Ai�̏����l��5�ȏ�ɐݒ肷��K�v������܂��B
+ほかのパターン
+i < 5：「iが5未満の間」繰り返すという意味です。つまり、iは0, 1, 2, 3, 4のときに動作します。
+i <= 5：「iが5以下の間」繰り返すという意味です。iは0, 1, 2, 3, 4, 5のときに動作します。
+i > 5：「iが5より大きい間」繰り返すという意味です。しかし、これをループの開始条件に使う場合は、iの初期値を5より大きく設定する必要があります。
+i >= 5：「iが5以上の間」繰り返すという意味です。この条件も、iの初期値を5以上に設定する必要があります。
  */
 
 public class ApplePicker : MonoBehaviour
 {
     void Start()
     {
-        // 5�̃����S���J�S�ɓ����
+        // 5個のリンゴをカゴに入れる
         for (int i = 0; i < 5; i++)
         {
-            Debug.Log("�����S����J�S�ɓ��ꂽ��I");
+            Debug.Log("リンゴを一個カゴに入れたよ！");
         }
     }
 }

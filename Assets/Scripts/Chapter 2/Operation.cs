@@ -1,78 +1,78 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /*
- 1. �ϐ��ƃf�[�^�^
-�ϐ��́A�f�[�^��ۑ����邽�߂̔��̂悤�Ȃ��̂ł��B
-�Ⴆ�΁A���Ȃ��̖��O��A�����Ă��邨�َq�̐��Ȃǂ��L�^���邽�߂Ɏg���܂��B
-�f�[�^�^�́A���̔����ǂ�Ȏ�ނ̂��̂������邩�������Ă���܂��B
-���Ƃ��΁A�u���v�����锠��A�u�����v�����锠������܂��B
+ 1. 変数とデータ型
+変数は、データを保存するための箱のようなものです。
+例えば、あなたの名前や、持っているお菓子の数などを記録するために使います。
+データ型は、その箱がどんな種類のものを入れられるかを教えてくれます。
+たとえば、「数」を入れる箱や、「文字」を入れる箱があります。
 
-2. �����������
-������Ƃ́A���������񂾂��̂ł��B���O��A�D���ȐH�ו��̖��O�ȂǁA���t���v���O�������Ŏg�������Ƃ���string�^�̕ϐ����g���܂��B
+2. 文字列を扱う
+文字列とは、文字が並んだものです。名前や、好きな食べ物の名前など、言葉をプログラム内で使いたいときにstring型の変数を使います。
 
-3�ϐ��ɕۑ����ꂽ�f�[�^���g���āA�����Z������Z�Ȃǂ̌v�Z���s�����Ƃ��ł��܂��B3
+3変数に保存されたデータを使って、足し算や引き算などの計算を行うことができます。3
 
-int�͐�����ۑ����邽�߂̃f�[�^�^�ł��B
-string�͕����╶�͂�ۑ����邽�߂̃f�[�^�^�ł��B
+intは整数を保存するためのデータ型です。
+stringは文字や文章を保存するためのデータ型です。
 
-�����̊�{�I�ȊT�O�������ł���΁A�v���O���~���O�ł��낢��Ȃ��Ƃ��ł���悤�ɂȂ�܂��B
-�ϐ����g���ď���ۑ�������A���̏����g���Čv�Z��������A���������������肷�邱�Ƃ��A�v���O���~���O�Ŋy�����V�ԑ����ł��I
+これらの基本的な概念が理解できれば、プログラミングでいろいろなことができるようになります。
+変数を使って情報を保存したり、その情報を使って計算をしたり、文字情報を扱ったりすることが、プログラミングで楽しく遊ぶ第一歩です！
 
-��ʂ�̌v�Z�p�^�[��
-���Z�i�����Z�j�A���Z�i�����Z�j�A��Z�i�|���Z�j�A���Z�i����Z�j�Ȃǂ̊�{�I�ȉ��Z�ƁA���̑��̉��Z�q�ɂ��Ă��������܂��B
+一通りの計算パターン
+加算（足し算）、減算（引き算）、乗算（掛け算）、除算（割り算）などの基本的な演算と、その他の演算子についても説明します。
 
-�C���N�������g�ƃf�N�������g
-�C���N�������g�i++�j�́A�ϐ��̒l��1���₷����ł��B�f�N�������g�i--�j�́A�ϐ��̒l��1���炷����ł��B
+インクリメントとデクリメント
+インクリメント（++）は、変数の値を1増やす操作です。デクリメント（--）は、変数の値を1減らす操作です。
  */
 
 
 public class Operation : MonoBehaviour
 {
-    private int age = 10;  // �uint�v�͐��������锠�A�uage�v�͕ϐ����A10�͓���鐔
-    private string nameimg = "�n��";  // �ustring�v�͕��������锠�A�uname�v�͕ϐ����A"�n��"�͓���镶��
+    private int age = 10;  // 「int」は整数を入れる箱、「age」は変数名、10は入れる数
+    private string nameimg = "ハル";  // 「string」は文字を入れる箱、「name」は変数名、"ハル"は入れる文字
     // Start is called before the first frame update
     void Start()
     {
         
 
-        //�����ł́AfavoriteFood�Ƃ����ϐ���"�A�C�X�N���[��"�Ƃ����������ۑ����A�����\�����Ă��܂��B
-        string favoriteFood = "�A�C�X�N���[��";
-        Debug.Log("���̍D���ȐH�ו��� " + favoriteFood + " �ł��B");
+        //ここでは、favoriteFoodという変数に"アイスクリーム"という文字列を保存し、それを表示しています。
+        string favoriteFood = "アイスクリーム";
+        Debug.Log("私の好きな食べ物は " + favoriteFood + " です。");
 
-        //apples��oranges�ɂ��ꂼ�ꐔ�������Ă��āAtotalFruits�ł͂����𑫂��Z���Ă��܂��B
+        //applesとorangesにそれぞれ数が入っていて、totalFruitsではこれらを足し算しています。
         int apples = 5;
         int oranges = 3;
         int totalFruits = apples + oranges;
-        Debug.Log("�ʕ��̍��v�� " + totalFruits + " �ł��B");
+        Debug.Log("果物の合計は " + totalFruits + " 個です。");
 
-        int sum = 5 + 3; // 5��3�𑫂�
-        Debug.Log("���v: " + sum); // �o��: ���v: 8
+        int sum = 5 + 3; // 5と3を足す
+        Debug.Log("合計: " + sum); // 出力: 合計: 8
 
-        int difference = 10 - 6; // 10����6������
-        Debug.Log("��: " + difference); // �o��: ��: 4
+        int difference = 10 - 6; // 10から6を引く
+        Debug.Log("差: " + difference); // 出力: 差: 4
 
-        int product = 4 * 2; // 4��2���|����
-        Debug.Log("��: " + product); // �o��: ��: 8
+        int product = 4 * 2; // 4に2を掛ける
+        Debug.Log("積: " + product); // 出力: 積: 8
 
-        int quotient = 20 / 5; // 20��5�Ŋ���
-        Debug.Log("��: " + quotient); // �o��: ��: 4
+        int quotient = 20 / 5; // 20を5で割る
+        Debug.Log("商: " + quotient); // 出力: 商: 4
 
-        int remainder = 7 % 3; // 7��3�Ŋ������]��
-        Debug.Log("�]��: " + remainder); // �o��: �]��: 1
+        int remainder = 7 % 3; // 7を3で割った余り
+        Debug.Log("余り: " + remainder); // 出力: 余り: 1
 
         int number = 10;
-        number++; // number��1�𑫂�
-        Debug.Log("�C���N�������g��: " + number); // �o��: �C���N�������g��: 11
+        number++; // numberに1を足す
+        Debug.Log("インクリメント後: " + number); // 出力: インクリメント後: 11
 
-        number--; // number����1������
-        Debug.Log("�f�N�������g��: " + number); // �o��: �f�N�������g��: 10
+        number--; // numberから1を引く
+        Debug.Log("デクリメント後: " + number); // 出力: デクリメント後: 10
 
     }
-    //�����̉��Z�q���g���āA�v���O�������Ő��l���v�Z������A�f�[�^�𑀍삵���肷�邱�Ƃ��ł��܂��B
-    //����ɂ��A�v���O��������蓮�I�ŗL�p�Ȃ��̂ɂȂ�܂��B
-    //���w���ł��A�����̊�{�I�ȉ��Z�������ł���΁A�v���O���~���O�ŗV�тȂ���w�Ԃ��Ƃ��y�����Ȃ�ł��傤�I
+    //これらの演算子を使って、プログラム内で数値を計算したり、データを操作したりすることができます。
+    //これにより、プログラムがより動的で有用なものになります。
+    //小学生でも、これらの基本的な演算が理解できれば、プログラミングで遊びながら学ぶことが楽しくなるでしょう！
     // Update is called once per frame
     
 

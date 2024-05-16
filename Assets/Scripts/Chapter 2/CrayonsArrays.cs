@@ -1,24 +1,24 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /*
- ���̃v���O�����ł́A5�F�̃N�������𔠁i�z��j�ɓ���āA���ꂼ��̃N��������������Ă����܂��B
-crayons.Length �͔z��̒����A�܂�N�������̐��������Ă���܂��B
-for���[�v���g���āA���̒��̃N��������������o���āA���Ԗڂɂǂ�ȐF�����邩���m�F���Ă��܂��B
+ このプログラムでは、5色のクレヨンを箱（配列）に入れて、それぞれのクレヨンを一つずつ見ていきます。
+crayons.Length は配列の長さ、つまりクレヨンの数を教えてくれます。
+forループを使って、箱の中のクレヨンを一つずつ取り出して、何番目にどんな色があるかを確認しています。
 
-�z����g�������b�g
-�z����g���ƁA������ނ̂�������̃f�[�^���ȒP�ɊǗ��ł��܂��B
-�Ⴆ�΁A�N���X�̑S���̃e�X�g�̓_����A���C�ɓ���̃A�j���̃��X�g�ȂǁA�����悤�Ȃ��̂��܂Ƃ߂Ă����̂ɕ֗��ł��B
-����ɁA���Ԗڂɉ������邩���ȒP�ɒm�邱�Ƃ��ł���̂ŁA���������Ɍ������܂��B
+配列を使うメリット
+配列を使うと、同じ種類のたくさんのデータを簡単に管理できます。
+例えば、クラスの全員のテストの点数や、お気に入りのアニメのリストなど、似たようなものをまとめておくのに便利です。
+それに、何番目に何があるかを簡単に知ることができるので、情報をすぐに見つけられます。
 
-���̂悤�ɔz����g�����ƂŁA�v���O���~���O�������Ɗy�����A���ɗ����̂ɂȂ�܂��B���낢��ȃf�[�^��z��ɓ���ĊǗ����Ă݂�Ƃ����ł��傤�I
+このように配列を使うことで、プログラミングがもっと楽しく、役に立つものになります。いろいろなデータを配列に入れて管理してみるといいでしょう！
 
 
-���L�̔z��ł́A��x�쐬����Ƃ��̃T�C�Y��ύX���邱�Ƃ͂ł��܂���B
-�܂�A�z��ɐV�����v�f��ǉ�������A�v�f���폜�����肷�邱�Ƃ͒��ړI�ɂ͂ł��Ȃ��̂ł��B
-�������A�V�����v�f��ǉ��������ꍇ��A�v�f���폜�������ꍇ�ɂ́A�V�����z����쐬���āA���̗v�f��V�����z��ɃR�s�[����K�v������܂��B
-�ǉ��폜�Ȃ�List���g���܂��傤
+下記の配列では、一度作成するとそのサイズを変更することはできません。
+つまり、配列に新しい要素を追加したり、要素を削除したりすることは直接的にはできないのです。
+ただし、新しい要素を追加したい場合や、要素を削除したい場合には、新しい配列を作成して、元の要素を新しい配列にコピーする必要があります。
+追加削除ならListを使いましょう
 
  */
 
@@ -28,18 +28,18 @@ public class CrayonsArrays : MonoBehaviour
 // Start is called before the first frame update
     void Start()
     {
-        // 5�F�̃N��������z��ō��
-        string[] crayons = new string[5];  // �ustring�v�͕����̃f�[�^��ۑ�����Ƃ����Ӗ�
-        crayons[0] = "��";  // 0�Ԗڂ̈ʒu�Ɂu�ԁv������
-        crayons[1] = "��";  // 1�Ԗڂ̈ʒu�Ɂu�v������
-        crayons[2] = "��";  // 2�Ԗڂ̈ʒu�Ɂu�΁v������
-        crayons[3] = "��";  // 3�Ԗڂ̈ʒu�Ɂu���v������
-        crayons[4] = "��";  // 4�Ԗڂ̈ʒu�Ɂu���v
+        // 5色のクレヨンを配列で作る
+        string[] crayons = new string[5];  // 「string」は文字のデータを保存するという意味
+        crayons[0] = "赤";  // 0番目の位置に「赤」を入れる
+        crayons[1] = "青";  // 1番目の位置に「青」を入れる
+        crayons[2] = "緑";  // 2番目の位置に「緑」を入れる
+        crayons[3] = "黄";  // 3番目の位置に「黄」を入れる
+        crayons[4] = "紫";  // 4番目の位置に「紫」
         
-        // �z��̒��g���m�F����
+        // 配列の中身を確認する
         for (int i = 0; i < crayons.Length; i++)
         {
-            Debug.Log("�N��������" + (i + 1) + "�Ԗڂ̐F��" + crayons[i] + "�ł��B");
+            Debug.Log("クレヨンの" + (i + 1) + "番目の色は" + crayons[i] + "です。");
         }
     }
 

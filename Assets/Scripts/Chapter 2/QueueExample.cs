@@ -1,36 +1,36 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /*
- ���
-�L���[�̍쐬�Fnew Queue<int>() �ŐV�����L���[�����܂��B���̃L���[�͐�����ۑ��ł��܂��B
-�G���L���[����Fnumbers.Enqueue(1); �̂悤�ɂ��āA�L���[�̖����ɐV����������ǉ����܂��B
-�f�L���[����Fnumbers.Dequeue(); ���g���āA�L���[�̐擪�̐��������o���܂��B
-              ���̑���Ő�ɒǉ����ꂽ���������o����A�L���[����폜����܂��B
-�L���[�̏�Ԋm�F�Fnumbers.Count �ŃL���[���̃A�C�e�������m�F���Anumbers.Peek() �Ŏ��Ɏ��o�����A�C�e�������������邱�Ƃ��ł��܂��B
+ 解説
+キューの作成：new Queue<int>() で新しいキューを作ります。このキューは整数を保存できます。
+エンキュー操作：numbers.Enqueue(1); のようにして、キューの末尾に新しい数字を追加します。
+デキュー操作：numbers.Dequeue(); を使って、キューの先頭の数字を取り出します。
+              この操作で先に追加された数字が取り出され、キューから削除されます。
+キューの状態確認：numbers.Count でキュー内のアイテム数を確認し、numbers.Peek() で次に取り出されるアイテムが何かを見ることができます。
 
-�L���[�́A���Ԃɏ��������ׂ��^�X�N��f�[�^������ꍇ�ɔ��ɖ𗧂��܂��B���̐�����o���̐������A����̃V�i���I�Ŕ��ɕ֗��ȊǗ����@��񋟂��܂��B
+キューは、順番に処理されるべきタスクやデータがある場合に非常に役立ちます。この先入れ先出しの性質が、特定のシナリオで非常に便利な管理方法を提供します。
  */
 
 public class QueueExample : MonoBehaviour
 {
     void Start()
     {
-        Queue<int> numbers = new Queue<int>(); // �V�����L���[�����
+        Queue<int> numbers = new Queue<int>(); // 新しいキューを作る
 
-        // �L���[�ɐ������G���L���[����
+        // キューに数字をエンキューする
         numbers.Enqueue(1);
         numbers.Enqueue(2);
         numbers.Enqueue(3);
 
-        // �L���[���琔�����f�L���[����
-        Debug.Log(numbers.Dequeue()); // 1���\�������
-        Debug.Log(numbers.Dequeue()); // 2���\�������
+        // キューから数字をデキューする
+        Debug.Log(numbers.Dequeue()); // 1が表示される
+        Debug.Log(numbers.Dequeue()); // 2が表示される
 
-        // �L���[�Ɏc���Ă��鐔�����m�F
-        Debug.Log("�L���[�ɂ� " + numbers.Count + " �̐������c���Ă��܂��B");
-        Debug.Log("���Ɏ��o����鐔���� " + numbers.Peek() + " �ł��B"); // 3���\�������
+        // キューに残っている数字を確認
+        Debug.Log("キューには " + numbers.Count + " 個の数字が残っています。");
+        Debug.Log("次に取り出される数字は " + numbers.Peek() + " です。"); // 3が表示される
     }
 }
 

@@ -1,40 +1,40 @@
-using System.Collections;
-using System.Collections.Generic; // ���X�g���g�����߂ɕK�v
+﻿using System.Collections;
+using System.Collections.Generic; // リストを使うために必要
 using UnityEngine;
 
 /*
- ���
-���X�g�̍쐬�FList<string> pets = new List<string>(); �ŐV�������X�g�����܂��B���̃��X�g�͕������ۑ����邽�߂̂��̂ł��B
-�ǉ��Fpets.Add("����"); �̂悤�� .Add ���\�b�h���g���ă��X�g�ɐV�����A�C�e����ǉ����܂��B
-�\���Fforeach ���[�v���g���ă��X�g�̒��g��������o���A�\�����܂��B
-�폜�Fpets.Remove("�Ƃ�"); �Ń��X�g�������̃A�C�e�����폜���܂��B
-���̂悤�Ƀ��X�g���g���ƁA�f�[�^�̊Ǘ����ƂĂ��֗��ɂȂ�܂��B
-�܂��A���X�g�͒��ɂ����f�[�^�������Ă��A�ȒP�Ɉ������Ƃ��ł���̂ŁA��������̃f�[�^��ۑ����Ă����̂ɍœK�ł��B
-�v���O���~���O�Ń��X�g�����Ɏg�����Ƃ��ł���΁A���낢��ȏ����ȒP�ɐ����ł���悤�ɂȂ�܂���B
+ 解説
+リストの作成：List<string> pets = new List<string>(); で新しいリストを作ります。このリストは文字列を保存するためのものです。
+追加：pets.Add("いぬ"); のように .Add メソッドを使ってリストに新しいアイテムを追加します。
+表示：foreach ループを使ってリストの中身を一つずつ取り出し、表示します。
+削除：pets.Remove("とり"); でリストから特定のアイテムを削除します。
+このようにリストを使うと、データの管理がとても便利になります。
+また、リストは中にいくつデータがあっても、簡単に扱うことができるので、たくさんのデータを保存しておくのに最適です。
+プログラミングでリストを上手に使うことができれば、いろいろな情報を簡単に整理できるようになりますよ。
  */
 
 public class PetListExample : MonoBehaviour
 {
     void Start()
     {
-        // �V�������X�g�����
+        // 新しいリストを作る
         List<string> pets = new List<string>();
 
-        // ���X�g�Ƀy�b�g�̖��O��ǉ�����
-        pets.Add("����");
-        pets.Add("�˂�");
-        pets.Add("�Ƃ�");
+        // リストにペットの名前を追加する
+        pets.Add("いぬ");
+        pets.Add("ねこ");
+        pets.Add("とり");
 
-        // ���X�g����y�b�g�̖��O������\������
+        // リストからペットの名前を一つずつ表示する
         foreach (string pet in pets)
         {
             Debug.Log(pet);
         }
 
-        // ���X�g����u�Ƃ�v���폜����
-        pets.Remove("�Ƃ�");
+        // リストから「とり」を削除する
+        pets.Remove("とり");
 
-        // �u�Ƃ�v���폜������̃��X�g�̓��e��\������
+        // 「とり」を削除した後のリストの内容を表示する
         foreach (string pet in pets)
         {
             Debug.Log(pet);

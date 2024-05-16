@@ -1,47 +1,47 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /*
- ����������A�Ԃ�l�����郁�\�b�h
-����������A�Ԃ�l�����郁�\�b�h�́A�O��������󂯎��i��������j�A��Ƃ̌��ʂ��O�ɕԂ��܂��i�Ԃ�l����j�B
-������g���ƁA���_��Ŗ𗧂v���O��������邱�Ƃ��ł��܂��B
+ 引数があり、返り値もあるメソッド
+引数があり、返り値があるメソッドは、外から情報を受け取り（引数あり）、作業の結果を外に返します（返り値あり）。
+これを使うと、より柔軟で役立つプログラムを作ることができます。
 
-����2�{�ɂ��郁�\�b�h�̐���
-���̃��\�b�h�́A���Ȃ��������Ă��鐔���i���Ƃ��΂����Â����̋��z��A�����Ă���{�[���̐��Ȃǁj��2�{�ɂ��āA�V���������������Ă���閂�@�̔��̂悤�Ȃ��̂ł��B
+数を2倍にするメソッドの説明
+このメソッドは、あなたが持っている数字（たとえばおこづかいの金額や、持っているボールの数など）を2倍にして、新しい数字を教えてくれる魔法の箱のようなものです。
 
-�Ⴆ�΁A����Ȋ����ł��F
-�܂��A���Ȃ����u4�v�Ƃ������������̖��@�̔��ɓ���܂��i���ꂪ���\�b�h�ɓn���u�����v�ł��j�B
-���@�̔��́A���̐�����2�{�ɂ��āA�u8�v�Ƃ����V�������������܂��B
-�����āA���̐V�����u8�v�Ƃ������������Ȃ��ɕԂ��܂��i���ꂪ�u�Ԃ�l�v�ƌĂ΂����̂ł��j�B
-�v���O�����̒��ł̐���
-�v���O�����ł́A���̖��@�̔���DoubleNumber���\�b�h�Ƃ��č���Ă��܂��B
-���̃��\�b�h�́A�������󂯎��A�����2�{�ɂ��āA���̌��ʂ�Ԃ������������Ă��܂��B
+例えば、こんな感じです：
+まず、あなたが「4」という数字をこの魔法の箱に入れます（これがメソッドに渡す「引数」です）。
+魔法の箱は、その数字を2倍にして、「8」という新しい数字を作ります。
+そして、この新しい「8」という数字をあなたに返します（これが「返り値」と呼ばれるものです）。
+プログラムの中での説明
+プログラムでは、この魔法の箱がDoubleNumberメソッドとして作られています。
+このメソッドは、数字を受け取り、それを2倍にして、その結果を返す役割を持っています。
  */
 
 public class SimpleActions : MonoBehaviour
 {
-    // �Q�[�����n�܂����Ƃ��Ɏ����I�ɌĂяo�����
+    // ゲームが始まったときに自動的に呼び出される
     void Start()
     {
-        // ��{�ɂ��郁�\�b�h���Ăяo���āA���̌��ʂ�\������
+        // 二倍にするメソッドを呼び出して、その結果を表示する
         int result = DoubleNumber(4);
-        Debug.Log("���ʂ� " + result);  // 8���\�������
+        Debug.Log("結果は " + result);  // 8が表示される
     }
 
-    // DoubleNumber���\�b�h: �󂯎��������2�{�ɂ��ĕԂ�
+    // DoubleNumberメソッド: 受け取った数を2倍にして返す
     int DoubleNumber(int number)
     {
         return number * 2;
     }
 }
 /*
- ���̃R�[�h�̒���:
+ このコードの中で:
 
-int number �̓��\�b�h�ɓn����鐔���ł��B�����ł́u�����v�ƌĂ΂�܂��B
-return number * 2; �́A�󂯎��������number��2�{�ɂ��āA���̌��ʂ�Ԃ����߂ł��B
-return�́A���̖��@�̔������ʂ��O�ɏo�����߂̕��@�ł��B
-���̂悤�ɂ��āADoubleNumber���\�b�h�͐�����2�{�ɂ��閂�@�̔��Ƃ��ċ@�\���܂��B
-���Ȃ������̃��\�b�h�ɐ�����n���ƁA���ꂪ2�{�ɂȂ��ĕԂ��Ă���̂ŁA�V�����������g���ĉ��������邱�Ƃ��ł��܂��B
-]���̕��@�ŁA�v���O���~���O�͐F�X�Ȍv�Z�⑀����ȒP�ɍs���菕�������Ă���܂��B
+int number はメソッドに渡される数字です。ここでは「引数」と呼ばれます。
+return number * 2; は、受け取った数字numberを2倍にして、その結果を返す命令です。
+returnは、この魔法の箱が結果を外に出すための方法です。
+このようにして、DoubleNumberメソッドは数字を2倍にする魔法の箱として機能します。
+あなたがこのメソッドに数字を渡すと、それが2倍になって返ってくるので、新しい数字を使って何かをすることができます。
+]この方法で、プログラミングは色々な計算や操作を簡単に行う手助けをしてくれます。
  */

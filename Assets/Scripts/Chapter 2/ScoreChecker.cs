@@ -1,106 +1,106 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;//Unity�G���W�����񋟂���@�\���g�����߂ɕK�v�ł��B
-                  //Unity�̃N���X�⃁�\�b�h��C#�X�N���v�g�Ŏg����悤�ɂ��邽�߂ɁA���̍s���t�@�C���̍ŏ��ɏ����܂��B
+using UnityEngine;//Unityエンジンが提供する機能を使うために必要です。
+                  //UnityのクラスやメソッドをC#スクリプトで使えるようにするために、この行をファイルの最初に書きます。
 
 /*
- �ڍא���
-public class ScoreChecker : MonoBehaviour�F
+ 詳細説明
+public class ScoreChecker : MonoBehaviour：
 
-���̍s�́AScoreChecker�Ƃ����V�����N���X�����Ƃ���ł��BMonoBehaviour���p�����Ă���̂ŁA
-Unity�̃Q�[���I�u�W�F�N�g�ɂ��̃X�N���v�g���A�^�b�`���邱�Ƃ��ł��AUnity�̃C�x���g�V�X�e���𗘗p���邱�Ƃ��ł��܂��B
+この行は、ScoreCheckerという新しいクラスを作るところです。MonoBehaviourを継承しているので、
+Unityのゲームオブジェクトにこのスクリプトをアタッチすることができ、Unityのイベントシステムを利用することができます。
 
-public int score;�F
+public int score;：
 
-������score�Ƃ������O�̌��J���ꂽ�����^�̕ϐ����`���Ă��܂��B����ɂ��AUnity�̃G�f�B�^���璼�ڃX�R�A�̒l��ݒ肷�邱�Ƃ��ł��܂��B
+ここでscoreという名前の公開された整数型の変数を定義しています。これにより、Unityのエディタから直接スコアの値を設定することができます。
 
-void Start()����if���F
+void Start()内のif文：
 
-Start�֐����ŏ������iif���j���g�p���āA�X�R�A��100�ȏォ�ǂ������`�F�b�N���Ă��܂��B100�_�ȏ�Ȃ�u�������I�v�ƕ\�����A
-����ȊO�Ȃ�u�����Ɗ撣�낤�I�v�ƕ\�����܂��B
-����ɂ��A�v���C���[�Ƀt�B�[�h�o�b�N��񋟂��邱�Ƃ��ł��܂��B
+Start関数内で条件文（if文）を使用して、スコアが100以上かどうかをチェックしています。100点以上なら「すごい！」と表示し、
+それ以外なら「もっと頑張ろう！」と表示します。
+これにより、プレイヤーにフィードバックを提供することができます。
 
-�ق��̃p�^�[��
-1. ���l�̔�r:if (age < 13)
+ほかのパターン
+1. 数値の比較:if (age < 13)
 int age = 16;
 
 if (age < 13) {
-    Debug.Log("�q��");
+    Debug.Log("子供");
 } else if (age < 20) {
-    Debug.Log("�e�B�[��");
+    Debug.Log("ティーン");
 } else {
-    Debug.Log("��l");
+    Debug.Log("大人");
 }
 
-2. ������̔�r:
+2. 文字列の比較:
 
 string password = "secret";
 
 if (password == "secret") {
-    Debug.Log("�p�X���[�h���������ł��B");
+    Debug.Log("パスワードが正しいです。");
 } else {
-    Debug.Log("�p�X���[�h���Ԉ���Ă��܂��B");
+    Debug.Log("パスワードが間違っています。");
 }
 
-3. �����̏���
-�����̏�����&&�iAND���Z�q�j��||�iOR���Z�q�j�őg�ݍ��킹�Ďg���܂��B
-�N�65�Έȏ�ł���A�������o�[�ł���ꍇ�Ɋ�����K�p
+3. 複数の条件
+複数の条件を&&（AND演算子）や||（OR演算子）で組み合わせて使います。
+年齢が65歳以上であり、かつメンバーである場合に割引を適用
 
 int age = 65;
 bool isMember = true;
 
 if (age >= 65 && isMember) {
-    Debug.Log("�������K�p����܂��I");
+    Debug.Log("割引が適用されます！");
 }
-4. �u�[���l�̃`�F�b�N
-�u�[���l�i�^�܂��͋U�j�𒼐ڃ`�F�b�N���܂��B
+4. ブール値のチェック
+ブール値（真または偽）を直接チェックします。
 bool isNight = true;
 
 if (isNight) {
-    Debug.Log("���C�g�����܂��B");
+    Debug.Log("ライトをつけます。");
 } else {
-    Debug.Log("���C�g�������܂��B");
+    Debug.Log("ライトを消します。");
 }
 
-5. �l�X�g���ꂽ����
-�����̒��ɏ��������邱�Ƃ��ł��A��蕡�G�ȃ��W�b�N���쐬���܂��B
-�N�18�Έȏ�Őg���ؖ����������Ă���ꍇ�ɂ̂݃A���R�[���̍w���������Ă��܂��B
+5. ネストされた条件
+条件の中に条件を入れることができ、より複雑なロジックを作成します。
+年齢が18歳以上で身分証明書を持っている場合にのみアルコールの購入を許可しています。
 
 int age = 20;
 bool hasID = true;
 
 if (age >= 18) {
     if (hasID) {
-        Debug.Log("�A���R�[�����w���ł��܂��B");
+        Debug.Log("アルコールを購入できます。");
     } else {
-        Debug.Log("�g���ؖ����K�v�ł��B");
+        Debug.Log("身分証明が必要です。");
     }
 } else {
-    Debug.Log("�w���ł��܂���B");
+    Debug.Log("購入できません。");
 }
 
 
-for���̖����̊�,�ȉ���,���傫��,�ȏ�̊ԁ@���g���܂���
-�����Ŏ����Ă݂Ă�
+for分の未満の間,以下の,より大きい,以上の間　も使えますよ
+自分で試してみてね
 
  */
 
 public class ScoreChecker : MonoBehaviour
 {
-    //Unity�̃C���X�y�N�^�[�E�B���h�E���X�N���v�g��ɒl��������if�����m�F���܂��傤�I
-    // �X�R�A��ۑ�����ϐ�
+    //Unityのインスペクターウィンドウがスクリプト状に値を代入してif分を確認しましょう！
+    // スコアを保存する変数
     public int score;
 
     void Start()
     {
-        //�� �Q�[���J�n���Ɉ�x�������s�����
+        //↑ ゲーム開始時に一度だけ実行される
         if (score >= 100)
         {
-            Debug.Log("�������I");  // �R���\�[���Ɂu�������I�v�ƕ\��
+            Debug.Log("すごい！");  // コンソールに「すごい！」と表示
         }
         else
         {
-            Debug.Log("�����Ɗ撣�낤�I");  // �R���\�[���Ɂu�����Ɗ撣�낤�I�v�ƕ\��
+            Debug.Log("もっと頑張ろう！");  // コンソールに「もっと頑張ろう！」と表示
         }
     }
 }

@@ -1,38 +1,38 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*Unity�̃C���^�[�t�F�[�X�Ɗ�{�I�ȊT�O���Љ�邱�ƂŁA���k�����������̃Q�[���v���W�F�N�g���n�߂邽�߂̓y���z�����Ƃ�ړI
+/*Unityのインターフェースと基本的な概念を紹介することで、生徒が自分たちのゲームプロジェクトを始めるための土台を築くことを目的
  *
- *Unity�ŃQ�[���J�����n�߂��{�I�Ȏ菇
+ *Unityでゲーム開発を始める基本的な手順
  * 
-Scene View: �Q�[����3D�V�[���𒼐ڌ�����ҏW�����肷��ꏊ�ł��B
-Game View: �J�����̃Q�[�������ۂɂǂ̂悤�Ɍ����邩��\�����܂��B
-Hierarchy: �V�[�����̂��ׂẴI�u�W�F�N�g�̃��X�g���Ǘ����܂��B
-Project: �v���W�F�N�g���̑S�t�@�C���ƃt�H���_��\�����A�Ǘ����܂��B
-Inspector: �I�������I�u�W�F�N�g�̃v���p�e�B��ݒ��ҏW���܂��B
+Scene View: ゲームの3Dシーンを直接見たり編集したりする場所です。
+Game View: 開発中のゲームが実際にどのように見えるかを表示します。
+Hierarchy: シーン内のすべてのオブジェクトのリストを管理します。
+Project: プロジェクト内の全ファイルとフォルダを表示し、管理します。
+Inspector: 選択したオブジェクトのプロパティや設定を編集します。
 
-1.�V�����v���W�F�N�g���J�n:
+1.新しいプロジェクトを開始:
 
-Unity���J���A�uNew Project�v��I�����ĐV�����Q�[���v���W�F�N�g���쐬���܂��B
-2.3D�I�u�W�F�N�g��ǉ�:
+Unityを開き、「New Project」を選択して新しいゲームプロジェクトを作成します。
+2.3Dオブジェクトを追加:
 
-�uGameObject�v���j���[����u3D Object�v��I�����A�L���[�u��X�t�B�A�Ȃǂ̊�{�I�Ȍ`����V�[���ɒǉ����܂��B
+「GameObject」メニューから「3D Object」を選択し、キューブやスフィアなどの基本的な形状をシーンに追加します。
 
-3.�I�������I�u�W�F�N�g���N���b�N���A�ړ��A��]�A�X�P�[���̃c�[�����g���Ĉʒu��T�C�Y�𒲐����܂��B
+3.選択したオブジェクトをクリックし、移動、回転、スケールのツールを使って位置やサイズを調整します。
 
-4.�V�[���̃i�r�Q�[�V����:
+4.シーンのナビゲーション:
 
-�}�E�X�ƃL�[�{�[�h���g�p���āAScene View�����ړ����A�قȂ�p�x����I�u�W�F�N�g���ώ@���܂��B
-�v���W�F�N�g�̊Ǘ�:
+マウスとキーボードを使用して、Scene View内を移動し、異なる角度からオブジェクトを観察します。
+プロジェクトの管理:
 
-5.�uProject�v�E�B���h�E�Ńt�@�C����t�H���_�𐮗����A�K�v�ȃA�Z�b�g���Ǘ����܂��B
+5.「Project」ウィンドウでファイルやフォルダを整理し、必要なアセットを管理します。
 
-6.�v���p�e�B�̕ҏW:
+6.プロパティの編集:
 
-�uInspector�v�E�B���h�E���g�p���āA�I�������I�u�W�F�N�g�̃v���p�e�B��ݒ��ύX���܂��B
+「Inspector」ウィンドウを使用して、選択したオブジェクトのプロパティや設定を変更します。
 
-���������L�̓��e��AI�ɕ������i�ǂ��H������΂����́H��������Ȃǁj
+困ったら上記の内容をAIに聞こう（どこ？何すればいいの？説明せよなど）
  */
 
 
