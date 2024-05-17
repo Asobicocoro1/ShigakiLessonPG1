@@ -652,8 +652,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2042485075}
   - component: {fileID: 2042485074}
-  - component: {fileID: 2042485073}
-  - component: {fileID: 2042485072}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -661,34 +659,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2042485072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2042485071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60287f8215cfce0478af9496187b647d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rouletteController: {fileID: 0}
-  needleTransform: {fileID: 0}
-  outputText: {fileID: 0}
---- !u!114 &2042485073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2042485071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78b973787860cb2419c27a24e1ac3eee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxRotationSpeed: 360
 --- !u!212 &2042485074
 SpriteRenderer:
   m_ObjectHideFlags: 0
