@@ -86,7 +86,7 @@ Unityのマテリアルは、オブジェクトの見た目を決める重要な
 マテリアルの設定は、オブジェクトの見た目を大きく変える重要な作業です。色やテクスチャ、光沢や透明度などを調整して、自分のゲームの世界をよりリアルに、美しく作り上げましょう。
  */
 
-public class Guid_M : MonoBehaviour
+public class Guid_Mt : MonoBehaviour
 {
  
 }
