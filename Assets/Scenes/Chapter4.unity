@@ -437,7 +437,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 2
 --- !u!1 &1483052550
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,7 +474,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.34646437, g: 0.5411765, b: 0.16470589, a: 0}
+  m_BackGroundColor: {r: 0.5729957, g: 0.5924529, b: 0.5354433, a: 0.8235294}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
