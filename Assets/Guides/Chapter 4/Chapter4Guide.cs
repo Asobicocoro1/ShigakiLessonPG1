@@ -83,49 +83,7 @@ using UnityEngine;
 2. **スクリプトの編集**
    - 「CarController.cs」スクリプトをダブルクリックして、Visual Studioやエディタで開きます。
    - 以下のコードを入力します。
-
-```csharp
-using UnityEngine;
-
-public class CarController : MonoBehaviour
-{
-    private Vector2 startTouchPosition;
-    private Vector2 endTouchPosition;
-    private Rigidbody2D rb;
-
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
-    void Update()
-    {
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-
-            if (touch.phase == TouchPhase.Began)
-            {
-                startTouchPosition = touch.position;
-            }
-            else if (touch.phase == TouchPhase.Ended)
-            {
-                endTouchPosition = touch.position;
-                MoveCar();
-            }
-        }
-    }
-
-    void MoveCar()
-    {
-        Vector2 swipeVector = endTouchPosition - startTouchPosition;
-        float swipeDistance = swipeVector.magnitude;
-
-        Vector2 direction = swipeVector.normalized;
-        rb.AddForce(direction * swipeDistance);
-    }
-}
-```
+`
 
 ##### 4-4-2 スクリプトを車オブジェクトにアタッチする
 1. **車オブジェクトの選択**
