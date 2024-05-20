@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
+
     // スワイプの開始位置を保存する変数
     private Vector2 startMousePosition;
     // スワイプの終了位置を保存する変数
@@ -14,6 +15,7 @@ public class CarController : MonoBehaviour
     // 最初に一度だけ呼ばれる関数
     void Start()
     {
+
         // Rigidbody2Dコンポーネントを取得して変数に保存
         rb = GetComponent<Rigidbody2D>();
     }
