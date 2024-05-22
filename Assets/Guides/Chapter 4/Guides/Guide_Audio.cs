@@ -1,113 +1,111 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /*
- ### AudioSource�̃C���X�y�N�^�[�̏ڍ�
+ ### Unityのオーディオコンポーネントのインスペクター詳細
 
-AudioSource�́AUnity�ŉ���炷���߂̃R���|�[�l���g�ł��B�ȉ��ɁAAudioSource�̃C���X�y�N�^�[�̊e���ڂ����w���ɂ��킩��悤�ɐ������܂��B
+#### AudioSourceのインスペクターの詳細
 
-#### 1. **AudioClip (�I�[�f�B�I�N���b�v)**
-- **����**: �Đ����鉹�̃t�@�C���ł��B
-- **�g����**: ���ʉ��≹�y�̃t�@�C���i��: `car_horn.wav`�j�������Ƀh���b�O���h���b�v���܂��B
+AudioSourceは、Unityで音を鳴らすためのコンポーネントです。以下に、AudioSourceのインスペクターの各項目を小学生にもわかるように説明します。
 
-#### 2. **Output (�o��)**
-- **����**: �����ǂ̃I�[�f�B�I�~�L�T�[�O���[�v�ɏo�͂��邩��ݒ肵�܂��B�ʏ�͉����ݒ肵�Ȃ��Ă����v�ł��B
-- **�g����**: �����ݒ肵�Ȃ��ꍇ�A�f�t�H���g�̐ݒ肪�g�p����܂��B
+#### 1. **AudioClip (オーディオクリップ)**
+- **説明**: 再生する音のファイルです。
+- **使い方**: 効果音や音楽のファイル（例: `car_horn.wav`）をここにドラッグ＆ドロップします。
 
-#### 3. **Mute (�~���[�g)**
-- **����**: �����ꎞ�I�ɏ����i�~���[�g����j���߂̐ݒ�ł��B
-- **�g����**: �`�F�b�N������Ɖ��������܂��B�`�F�b�N���O���Ɖ�����܂��B
+#### 2. **Output (出力)**
+- **説明**: 音をどのオーディオミキサーグループに出力するかを設定します。通常は何も設定しなくても大丈夫です。
+- **使い方**: 何も設定しない場合、デフォルトの設定が使用されます。
 
-#### 4. **Bypass Effects (�G�t�F�N�g���o�C�p�X)**
-- **����**: �I�[�f�B�I�~�L�T�[�̃G�t�F�N�g�𖳎�����ݒ�ł��B�ʏ�̓`�F�b�N�����܂���B
-- **�g����**: �ʏ�͐ݒ肵�Ȃ��Ă����v�ł��B
+#### 3. **Mute (ミュート)**
+- **説明**: 音を一時的に消す（ミュートする）ための設定です。
+- **使い方**: チェックを入れると音が消えます。チェックを外すと音が鳴ります。
 
-#### 5. **Bypass Listener Effects (���X�i�[�G�t�F�N�g���o�C�p�X)**
-- **����**: �I�[�f�B�I���X�i�[�̃G�t�F�N�g�𖳎�����ݒ�ł��B�ʏ�̓`�F�b�N�����܂���B
-- **�g����**: �ʏ�͐ݒ肵�Ȃ��Ă����v�ł��B
+#### 4. **Bypass Effects (エフェクトをバイパス)**
+- **説明**: オーディオミキサーのエフェクトを無視する設定です。通常はチェックを入れません。
+- **使い方**: 通常は設定しなくても大丈夫です。
 
-#### 6. **Bypass Reverb Zones (���o�[�u�]�[�����o�C�p�X)**
-- **����**: ���o�[�u�i�����j�̌��ʂ𖳎�����ݒ�ł��B�ʏ�̓`�F�b�N�����܂���B
-- **�g����**: �ʏ�͐ݒ肵�Ȃ��Ă����v�ł��B
+#### 5. **Bypass Listener Effects (リスナーエフェクトをバイパス)**
+- **説明**: オーディオリスナーのエフェクトを無視する設定です。通常はチェックを入れません。
+- **使い方**: 通常は設定しなくても大丈夫です。
 
-#### 7. **Play On Awake (�ڊo�߂����ɍĐ�)**
-- **����**: �Q�[�����n�܂������Ɏ����I�ɉ����Đ�����ݒ�ł��B
-- **�g����**: �`�F�b�N������ƁA�Q�[�����n�܂�Ƃ����ɉ�����܂��B�K�v�ɉ����Đݒ肵�܂��B
+#### 6. **Bypass Reverb Zones (リバーブゾーンをバイパス)**
+- **説明**: リバーブ（反響）の効果を無視する設定です。通常はチェックを入れません。
+- **使い方**: 通常は設定しなくても大丈夫です。
 
-#### 8. **Loop (���[�v)**
-- **����**: �����J��Ԃ��Đ�����ݒ�ł��B
-- **�g����**: �`�F�b�N������ƁA�����J��Ԃ���܂��B�Ⴆ�΁A�w�i���y�������Ɨ����ꍇ�Ɏg���܂��B
+#### 7. **Play On Awake (目覚めた時に再生)**
+- **説明**: ゲームが始まった時に自動的に音を再生する設定です。
+- **使い方**: チェックを入れると、ゲームが始まるとすぐに音が鳴ります。必要に応じて設定します。
 
-#### 9. **Priority (�D��x)**
-- **����**: ���̗D��x��ݒ肵�܂��B�l���Ⴂ�قǗD��x�������Ȃ�܂��B
-- **�g����**: �ʏ�̓f�t�H���g�̒l�ő��v�ł��B�����̉����d�Ȃ�ꍇ�ɁA�ǂ̉���D��I�ɍĐ����邩�����߂܂��B
+#### 8. **Loop (ループ)**
+- **説明**: 音を繰り返し再生する設定です。
+- **使い方**: チェックを入れると、音が繰り返し鳴ります。例えば、背景音楽をずっと流す場合に使います。
 
-#### 10. **Volume (����)**
-- **����**: ���̑傫����ݒ肵�܂��B
-- **�g����**: �X���C�_�[�𓮂����ĉ��ʂ𒲐����܂��B1���ő剹�ʂŁA0�������ł��B
+#### 9. **Priority (優先度)**
+- **説明**: 音の優先度を設定します。値が低いほど優先度が高くなります。
+- **使い方**: 通常はデフォルトの値で大丈夫です。複数の音が重なる場合に、どの音を優先的に再生するかを決めます。
 
-#### 11. **Pitch (�s�b�`)**
-- **����**: ���̍�����ݒ肵�܂��B
-- **�g����**: �X���C�_�[�𓮂����ĉ��̍����𒲐����܂��B1���ʏ�̍����ŁA0.5�ɂ���Ɖ����Ⴍ�Ȃ�A2�ɂ���Ɖ��������Ȃ�܂��B
+#### 10. **Volume (音量)**
+- **説明**: 音の大きさを設定します。
+- **使い方**: スライダーを動かして音量を調整します。1が最大音量で、0が無音です。
 
-#### 12. **Stereo Pan (�X�e���I�p��)**
-- **����**: ���̍��E�̃o�����X��ݒ肵�܂��B
-- **�g����**: �X���C�_�[�𓮂����ĉ��̍��E�̃o�����X�𒲐����܂��B-1�ō����̂݁A1�ŉE���̂݁A0�Œ����ł��B
+#### 11. **Pitch (ピッチ)**
+- **説明**: 音の高さを設定します。
+- **使い方**: スライダーを動かして音の高さを調整します。1が通常の高さで、0.5にすると音が低くなり、2にすると音が高くなります。
 
-#### 13. **Spatial Blend (��ԃu�����h)**
-- **����**: ����3D���ʂ̋�����ݒ肵�܂��B
-- **�g����**: �X���C�_�[�𓮂����Đݒ肵�܂��B0��2D�i��Ɉ��̉��ʁj�A1��3D�i�����ɉ����ĉ��ʂ��ς��j�ł��B
+#### 12. **Stereo Pan (ステレオパン)**
+- **説明**: 音の左右のバランスを設定します。
+- **使い方**: スライダーを動かして音の左右のバランスを調整します。-1で左側のみ、1で右側のみ、0で中央です。
 
-#### 14. **Reverb Zone Mix (���o�[�u�]�[���~�b�N�X)**
-- **����**: ���o�[�u�]�[�����ł̉��̔������ݒ肵�܂��B
-- **�g����**: �X���C�_�[�𓮂����Ĕ����̋����𒲐����܂��B�ʏ�̓f�t�H���g�̂܂܂ő��v�ł��B
+#### 13. **Spatial Blend (空間ブレンド)**
+- **説明**: 音の3D効果の強さを設定します。
+- **使い方**: スライダーを動かして設定します。0が2D（常に一定の音量）、1が3D（距離に応じて音量が変わる）です。
 
-### AudioListener�̃C���X�y�N�^�[�̏ڍ�
+#### 14. **Reverb Zone Mix (リバーブゾーンミックス)**
+- **説明**: リバーブゾーン内での音の反響具合を設定します。
+- **使い方**: スライダーを動かして反響の強さを調整します。通常はデフォルトのままで大丈夫です。
 
-AudioListener�́AUnity�ŉ��𕷂����߂̃R���|�[�l���g�ł��B�Q�[�����̃J������v���C���[�ɃA�^�b�`���āA�Q�[�����̉��𕷂��������ʂ����܂��B�ȉ��ɁAAudioListener�̃C���X�y�N�^�[�̊e���ڂ����w���ɂ��킩��悤�ɐ������܂��B
+### AudioListenerのインスペクターの詳細
 
-#### AudioListener�̃C���X�y�N�^�[�̍���
+AudioListenerは、Unityで音を聞くためのコンポーネントです。ゲーム内のカメラやプレイヤーにアタッチして、ゲーム内の音を聞く役割を果たします。以下に、AudioListenerのインスペクターの各項目を小学生にもわかるように説明します。
 
-AudioListener�̃C���X�y�N�^�[�́A���ɃV���v���ŁA�ݒ荀�ڂ����Ȃ��ł��B��{�I�ɂ́A�Q�[�����ŉ��𕷂����߂̎��̂悤�Ȗ��������܂��B
+#### AudioListenerのインスペクターの項目
 
-#### 1. **Enabled (�L��)**
-- **����**: AudioListener��L���܂��͖����ɂ��܂��B
-- **�g����**: �`�F�b�N�������AudioListener���L���ɂȂ�A�Q�[�����̉��𕷂����Ƃ��ł��܂��B�`�F�b�N���O���Ɩ����ɂȂ�܂��B
+AudioListenerのインスペクターは、非常にシンプルで、設定項目が少ないです。基本的には、ゲーム内で音を聞くための耳のような役割をします。
 
+#### 1. **Enabled (有効)**
+- **説明**: AudioListenerを有効または無効にします。
+- **使い方**: チェックを入れるとAudioListenerが有効になり、ゲーム内の音を聞くことができます。チェックを外すと無効になります。
 
-----------------------------------------------------
+#### 基本的な使い方
 
+- **説明**: AudioListenerは、通常1つのゲームオブジェクト（通常はメインカメラ）にアタッチされます。
+- **使い方**: メインカメラにAudioListenerコンポーネントがデフォルトでアタッチされています。特別な設定が必要ない場合がほとんどです。
 
-#### ��{�I�Ȏg����
+### AudioListenerの詳細説明
 
-- **����**: AudioListener�́A�ʏ�1�̃Q�[���I�u�W�F�N�g�i�ʏ�̓��C���J�����j�ɃA�^�b�`����܂��B
-- **�g����**: ���C���J������AudioListener�R���|�[�l���g���f�t�H���g�ŃA�^�b�`����Ă��܂��B���ʂȐݒ肪�K�v�Ȃ��ꍇ���قƂ�ǂł��B
+#### AudioListenerの役割
+- **音を聞く**: AudioListenerは、ゲーム内のすべての音を収集し、それをプレイヤーに届ける役割を果たします。これは人間の耳に相当します。
 
-### AudioListener�̏ڍא���
+#### AudioListenerの配置
+- **通常の配置**: AudioListenerは、通常メインカメラにアタッチされます。これにより、カメラが移動すると、音の聞こえ方もカメラの位置に応じて変わります。
+- **特殊な配置**: 特定のシーンやゲームプレイの要件に応じて、プレイヤーのオブジェクトにアタッチすることもあります。
 
-#### AudioListener�̖���
-- **���𕷂�**: AudioListener�́A�Q�[�����̂��ׂẲ������W���A������v���C���[�ɓ͂���������ʂ����܂��B����͐l�Ԃ̎��ɑ������܂��B
+#### 複数のAudioListenerの注意点
+- **説明**: シーン内に複数のAudioListenerが存在すると警告が表示されます。Unityでは通常、シーンに1つのAudioListenerしか必要ありません。
+- **対処法**: 複数のAudioListenerがある場合、不要なAudioListenerコンポーネントを無効にするか削除します。
 
-#### AudioListener�̔z�u
-- **�ʏ�̔z�u**: AudioListener�́A�ʏ탁�C���J�����ɃA�^�b�`����܂��B����ɂ��A�J�������ړ�����ƁA���̕����������J�����̈ʒu�ɉ����ĕς��܂��B
-- **����Ȕz�u**: ����̃V�[����Q�[���v���C�̗v���ɉ����āA�v���C���[�̃I�u�W�F�N�g�ɃA�^�b�`���邱�Ƃ�����܂��B
+### AudioListenerの設定例
 
-#### ������AudioListener�̒��ӓ_
-- **����**: �V�[�����ɕ�����AudioListener�����݂���ƌx�����\������܂��BUnity�ł͒ʏ�A�V�[����1��AudioListener�����K�v����܂���B
-- **�Ώ��@**: ������AudioListener������ꍇ�A�s�v��AudioListener�R���|�[�l���g�𖳌��ɂ��邩�폜���܂��B
+1. **AudioListenerの確認**
+   - メインカメラを選択し、インスペクターウィンドウでAudioListenerコンポーネントがアタッチされているか確認します。
 
-### AudioListener�̐ݒ��
+2. **AudioListenerの有効化/無効化**
+   - インスペクターウィンドウのAudioListenerコンポーネントの「Enabled」チェックボックスをオンにして有効にし、オフにして無効にします。
 
-1. **AudioListener�̊m�F**
-   - ���C���J������I�����A�C���X�y�N�^�[�E�B���h�E��AudioListener�R���|�[�l���g���A�^�b�`����Ă��邩�m�F���܂��B
+### 実際の使い方
 
-2. **AudioListener�̗L����/������**
-   - �C���X�y�N�^�[�E�B���h�E��AudioListener�R���|�[�l���g�́uEnabled�v�`�F�b�N�{�b�N�X���I���ɂ��ėL���ɂ��A�I�t�ɂ��Ė����ɂ��܂��B
-
-### ���ۂ̎g����
-
-- **�Q�[���J�n���̐ݒ�**:
+- **ゲーム開始時の設定**:
   ```csharp
   using UnityEngine;
 
@@ -115,7 +113,7 @@ AudioListener�̃C���X�y�N�^�[�́A���ɃV���v���ŁA�ݒ荀�ڂ����Ȃ��ł��B��{�I�
   {
       void Start()
       {
-          // ���C���J������AudioListener���A�^�b�`����Ă��邩�m�F
+          // メインカメラにAudioListenerがアタッチされているか確認
           Camera mainCamera = Camera.main;
           AudioListener audioListener = mainCamera.GetComponent<AudioListener>();
           if (audioListener != null)
@@ -130,103 +128,86 @@ AudioListener�̃C���X�y�N�^�[�́A���ɃV���v���ŁA�ݒ荀�ڂ����Ȃ��ł��B��{�I�
   }
   ```
 
-### �܂Ƃ�
+### まとめ
 
-AudioListener�́A�Q�[�����ŉ��𕷂����߂̏d�v�ȃR���|�[�l���g�ł��B
-�ʏ�A���C���J�����ɃA�^�b�`����Ă���A���ʂȐݒ肪�K�v�Ȃ��ꍇ���قƂ�ǂł��B
-�Q�[�����ŉ����ǂ̂悤�ɕ������邩�𐧌䂷�邽�߂ɁA1�̃V�[����1��AudioListener�������Ƃ���������܂��B
-����ɂ��A�Q�[���̉����̌�����т��ĊǗ�����܂��B
+AudioListenerは、ゲーム内で音を聞くための重要なコンポーネントです。通常、メインカメラにアタッチされており、特別な設定が必要ない場合がほとんどです。ゲーム内で音がどのように聞こえるかを制御するために、1つのシーンに1つのAudioListenerを持つことが推奨されます。これにより、ゲームの音響体験が一貫して管理されます。
 
+### 主要なオ
 
-AudioListener��AudioSource�ȊO�ɂ��AUnity�ŉ������ʂ≹�y�������ۂɖ𗧂�v�ȃR���|�[�l���g��@�\������܂��B
-�ȉ��ɁA�����̃R���|�[�l���g�Ƃ��̎g�����ɂ��Đ������܂��B
+ーディオ関連コンポーネントと機能
 
-### ��v�ȃI�[�f�B�I�֘A�R���|�[�l���g�Ƌ@�\
+#### 1. AudioClip (オーディオクリップ)
+- **説明**: AudioClipは、音楽や効果音などの音声データを保持するためのコンポーネントです。
+- **使い方**: AudioClipは、AudioSourceコンポーネントに設定して使用します。音声ファイル（例: `.wav`, `.mp3`）をプロジェクトにインポートすると、AudioClipとして使用できます。
 
-#### 1. AudioClip (�I�[�f�B�I�N���b�v)
-- **����**: AudioClip�́A���y����ʉ��Ȃǂ̉����f�[�^��ێ����邽�߂̃R���|�[�l���g�ł��B
-- **�g����**: AudioClip�́AAudioSource�R���|�[�l���g�ɐݒ肵�Ďg�p���܂��B
-�����t�@�C���i��: `.wav`, `.mp3`�j���v���W�F�N�g�ɃC���|�[�g����ƁAAudioClip�Ƃ��Ďg�p�ł��܂��B
+#### 2. Audio Mixer (オーディオミキサー)
+- **説明**: Audio Mixerは、複数のオーディオソースをまとめてミックスし、音量やエフェクトを制御するためのコンポーネントです。
+- **使い方**: オーディオミキサーを使用すると、ゲーム内の音のバランスを調整し、エフェクトを追加することができます。例えば、背景音楽と効果音の音量バランスを調整することができます。
 
-#### 2. Audio Mixer (�I�[�f�B�I�~�L�T�[)
-- **����**: Audio Mixer�́A�����̃I�[�f�B�I�\�[�X���܂Ƃ߂ă~�b�N�X���A���ʂ�G�t�F�N�g�𐧌䂷�邽�߂̃R���|�[�l���g�ł��B
-- **�g����**: �I�[�f�B�I�~�L�T�[���g�p����ƁA�Q�[�����̉��̃o�����X�𒲐����A�G�t�F�N�g��ǉ����邱�Ƃ��ł��܂��B
-�Ⴆ�΁A�w�i���y�ƌ��ʉ��̉��ʃo�����X�𒲐����邱�Ƃ��ł��܂��B
+#### 3. Audio Reverb Zone (オーディオリバーブゾーン)
+- **説明**: Audio Reverb Zoneは、特定のエリア内での音の反響（リバーブ）をシミュレートするためのコンポーネントです。
+- **使い方**: リバーブゾーンを配置すると、そのゾーン内で再生される音が反響して聞こえます。例えば、洞窟内の音響効果をシミュレートする場合に使用します。
 
-#### 3. Audio Reverb Zone (�I�[�f�B�I���o�[�u�]�[��)
-- **����**: Audio Reverb Zone�́A����̃G���A���ł̉��̔����i���o�[�u�j���V�~�����[�g���邽�߂̃R���|�[�l���g�ł��B
-- **�g����**: ���o�[�u�]�[����z�u����ƁA���̃]�[�����ōĐ�����鉹���������ĕ������܂��B
-�Ⴆ�΁A���A���̉������ʂ��V�~�����[�g����ꍇ�Ɏg�p���܂��B
+#### 4. Audio Low Pass Filter (オーディオローパスフィルター)
+- **説明**: Audio Low Pass Filterは、低周波数のみを通過させるフィルターで、高周波数の音をカットするためのコンポーネントです。
+- **使い方**: これを使用して、音が壁や障害物を通過する際に音質が変わる効果をシミュレートします。
 
-#### 4. Audio Low Pass Filter (�I�[�f�B�I���[�p�X�t�B���^�[)
-- **����**: Audio Low Pass Filter�́A����g���݂̂�ʉ߂�����t�B���^�[�ŁA�����g���̉����J�b�g���邽�߂̃R���|�[�l���g�ł��B
-- **�g����**: ������g�p���āA�����ǂ��Q����ʉ߂���ۂɉ������ς����ʂ��V�~�����[�g���܂��B
+#### 5. Audio High Pass Filter (オーディオハイパスフィルター)
+- **説明**: Audio High Pass Filterは、高周波数のみを通過させるフィルターで、低周波数の音をカットするためのコンポーネントです。
+- **使い方**: これを使用して、特定の効果音を強調したり、環境音を調整したりすることができます。
 
-#### 5. Audio High Pass Filter (�I�[�f�B�I�n�C�p�X�t�B���^�[)
-- **����**: Audio High Pass Filter�́A�����g���݂̂�ʉ߂�����t�B���^�[�ŁA����g���̉����J�b�g���邽�߂̃R���|�[�l���g�ł��B
-- **�g����**: ������g�p���āA����̌��ʉ�������������A�����𒲐������肷�邱�Ƃ��ł��܂��B
+### 各コンポーネントの詳細な使い方
 
-### �e�R���|�[�l���g�̏ڍׂȎg����
+#### AudioClipの使い方
 
-#### AudioClip�̎g����
+1. **音声ファイルのインポート**:
+   - プロジェクトウィンドウに音声ファイル（例: `background_music.mp3`）をドラッグ＆ドロップします。
+   - インポートされた音声ファイルは、自動的にAudioClipとして認識されます。
 
-1. **�����t�@�C���̃C���|�[�g**:
-   - �v���W�F�N�g�E�B���h�E�ɉ����t�@�C���i��: `background_music.mp3`�j���h���b�O���h���b�v���܂��B
-   - �C���|�[�g���ꂽ�����t�@�C���́A�����I��AudioClip�Ƃ��ĔF������܂��B
+2. **AudioSourceへの設定**:
+   - ヒエラルキーウィンドウでオーディオを再生するオブジェクトを選択し、インスペクターウィンドウでAudioSourceコンポーネントを追加します。
+   - AudioSourceコンポーネントのAudioClipフィールドに、インポートした音声ファイルをドラッグ＆ドロップします。
 
-2. **AudioSource�ւ̐ݒ�**:
-   - �q�G�����L�[�E�B���h�E�ŃI�[�f�B�I���Đ�����I�u�W�F�N�g��I�����A�C���X�y�N�^�[�E�B���h�E��AudioSource�R���|�[�l���g��ǉ����܂��B
-   - AudioSource�R���|�[�l���g��AudioClip�t�B�[���h�ɁA�C���|�[�g���������t�@�C�����h���b�O���h���b�v���܂��B
+#### Audio Mixerの使い方
 
-#### Audio Mixer�̎g����
+1. **オーディオミキサーの作成**:
+   - メニューから「Assets」 > 「Create」 > 「Audio Mixer」を選択して、新しいオーディオミキサーを作成します。
 
-1. **�I�[�f�B�I�~�L�T�[�̍쐬**:
-   - ���j���[����uAssets�v > �uCreate�v > �uAudio Mixer�v��I�����āA�V�����I�[�f�B�I�~�L�T�[���쐬���܂��B
+2. **グループの設定**:
+   - 作成したオーディオミキサーをダブルクリックして、オーディオミキサーウィンドウを開きます。
+   - 「Master」グループの下に新しいグループを追加して、音量やエフェクトを調整します。
 
-2. **�O���[�v�̐ݒ�**:
-   - �쐬�����I�[�f�B�I�~�L�T�[���_�u���N���b�N���āA�I�[�f�B�I�~�L�T�[�E�B���h�E���J���܂��B
-   - �uMaster�v�O���[�v�̉��ɐV�����O���[�v��ǉ����āA���ʂ�G�t�F�N�g�𒲐����܂��B
+3. **AudioSourceとのリンク**:
+   - ヒエラルキーウィンドウでオーディオを再生するオブジェクトを選択し、インスペクターウィンドウでAudioSourceコンポーネントのOutputフィールドにオーディオミキサーグループをドラッグ＆ドロップします。
 
-3. **AudioSource�Ƃ̃����N**:
-   - �q�G�����L�[�E�B���h�E�ŃI�[�f�B�I���Đ�����I�u�W�F�N�g��I�����A
-�C���X�y�N�^�[�E�B���h�E��AudioSource�R���|�[�l���g��Output�t�B�[���h�ɃI�[�f�B�I�~�L�T�[�O���[�v���h���b�O���h���b�v���܂��B
+#### Audio Reverb Zoneの使い方
 
-#### Audio Reverb Zone�̎g����
+1. **リバーブゾーンの追加**:
+   - ヒエラルキーウィンドウで右クリックし、「Audio」 > 「Audio Reverb Zone」を選択します。
+   - 新しいリバーブゾーンが作成されます。
 
-1. **���o�[�u�]�[���̒ǉ�**:
-   - �q�G�����L�[�E�B���h�E�ŉE�N���b�N���A�uAudio�v > �uAudio Reverb Zone�v��I�����܂��B
-   - �V�������o�[�u�]�[�����쐬����܂��B
+2. **リバーブゾーンの設定**:
+   - インスペクターウィンドウで、リバーブゾーンのプロパティを調整します。
+   - Min DistanceとMax Distanceフィールドを使って、リバーブ効果の範囲を設定します。
 
-2. **���o�[�u�]�[���̐ݒ�**:
-   - �C���X�y�N�^�[�E�B���h�E�ŁA���o�[�u�]�[���̃v���p�e�B�𒲐����܂��B
-   - Min Distance��Max Distance�t�B�[���h���g���āA���o�[�u���ʂ͈̔͂�ݒ肵�܂��B
+#### Audio Low Pass Filterの使い方
 
-#### Audio Low Pass Filter�̎g����
+1. **ローパスフィルターの追加**:
+   - ヒエラルキーウィンドウでオーディオを再生するオブジェクトを選択し、インスペクターウィンドウで「Add Component」をクリックし、「Audio Low Pass Filter」を追加します。
 
-1. **���[�p�X�t�B���^�[�̒ǉ�**:
-   - �q�G�����L�[�E�B���h�E�ŃI�[�f�B�I���Đ�����I�u�W�F�N�g��I�����A�C���X�y�N�^�[�E�B���h�E�ŁuAdd Component�v���N���b�N���܂��B
-   - �uAudio Low Pass Filter�v���������Ēǉ����܂��B
+2. **フィルターの設定**:
+   - カットオフ周波数を調整して、低周波数のみを通過させます。
 
-2. **�t�B���^�[�̐ݒ�**:
-   - �J�b�g�I�t���g���𒲐����āA����g���݂̂�ʉ߂����܂��B
+#### Audio High Pass Filterの使い方
 
-#### Audio High Pass Filter�̎g����
+1. **ハイパスフィルターの追加**:
+   - ヒエラルキーウィンドウでオーディオを再生するオブジェクトを選択し、インスペクターウィンドウで「Add Component」をクリックし、「Audio High Pass Filter」を追加します。
 
-1. **�n�C�p�X�t�B���^�[�̒ǉ�**:
-   - �q�G�����L�[�E�B���h�E�ŃI�[�f�B�I���Đ�����I�u�W�F�N�g��I�����A�C���X�y�N�^�[�E�B���h�E�ŁuAdd Component�v���N���b�N���܂��B
-   - �uAudio High Pass Filter�v���������Ēǉ����܂��B
+2. **フィルターの設定**:
+   - カットオフ周波数を調整して、高周波数のみを通過させます。
 
-2. **�t�B���^�[�̐ݒ�**:
-   - �J�b�g�I�t���g���𒲐����āA�����g���݂̂�ʉ߂����܂��B
-
-### �܂Ƃ�
-
-AudioListener��AudioSource�ɉ����āAAudioClip�AAudio Mixer�AAudio Reverb Zone�AAudio Low Pass Filter�AAudio High Pass Filter�Ȃǂ̃R���|�[�l���g���g�p���邱�ƂŁAUnity�̉����̌���L���ɂ��邱�Ƃ��ł��܂��B�����̃R���|�[�l���g��K�؂Ɋ��p���āA�Q�[���̉��������ʓI�ɊǗ����A�v���C���[�Ƀ��A���Ŗ��͓I�ȉ����̌���񋟂��܂��傤�B
-
-
-
- */
-
+これらのコンポーネントを正しく設定することで、ゲームの音響体験を豊かにすることができます。各コンポーネントの役割を理解し、適切に使用してみてください。
+*/
 public class Guide_Audio : MonoBehaviour
 {
  
