@@ -7,8 +7,7 @@ using UnityEngine;
 
 #### AudioSourceのインスペクターの詳細
 
-AudioSourceは、Unityで音を鳴らすためのコンポーネントです。以下に、AudioSourceのインスペクターの各項目を小学生にもわかるように説明します。
-
+AudioSourceは、Unityで音を鳴らすためのコンポーネントです
 #### 1. **AudioClip (オーディオクリップ)**
 - **説明**: 再生する音のファイルです。
 - **使い方**: 効果音や音楽のファイル（例: `car_horn.wav`）をここにドラッグ＆ドロップします。

@@ -30,8 +30,8 @@ stringは文字や文章を保存するためのデータ型です。
 
 public class Operation : MonoBehaviour
 {
-    private int age = 10;  // 「int」は整数を入れる箱、「age」は変数名、10は入れる数
-    private string nameimg = "ハル";  // 「string」は文字を入れる箱、「name」は変数名、"ハル"は入れる文字
+    //private int age = 10;  // 「int」は整数を入れる箱、「age」は変数名、10は入れる数
+    //private string nameimg = "ハル";  // 「string」は文字を入れる箱、「name」は変数名、"ハル"は入れる文字
     // Start is called before the first frame update
     void Start()
     {
