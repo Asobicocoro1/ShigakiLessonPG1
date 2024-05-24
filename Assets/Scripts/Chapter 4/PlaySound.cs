@@ -45,6 +45,8 @@ public class PlaySound : MonoBehaviour
     {
         // AudioSourceコンポーネントを取得
         audioSource = GetComponent<AudioSource>();
+
+        PlayCarHorn();
     }
 
     // 効果音を再生するメソッド
