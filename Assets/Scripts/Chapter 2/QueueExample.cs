@@ -23,6 +23,7 @@ public class QueueExample : MonoBehaviour
         numbers.Enqueue(1);
         numbers.Enqueue(2);
         numbers.Enqueue(3);
+        numbers.Enqueue(3);
 
         // キューから数字をデキューする
         Debug.Log(numbers.Dequeue()); // 1が表示される
