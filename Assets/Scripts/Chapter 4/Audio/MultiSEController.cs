@@ -16,6 +16,7 @@ public class MultiSEController : MonoBehaviour
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.loop = false; // 効果音はループしない
         audioSource.playOnAwake = false; // 自動再生しない
+        PlaySE(0); // 有効なインデックス、clip1を再生
     }
 
     //インデックス（index）: 配列やリストの中の要素を特定するための番号。0から始まります。
