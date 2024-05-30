@@ -4,29 +4,26 @@ using UnityEngine;
 
 /*
 日本語解説付きのスクリプトの説明
-public float speed = 5f;
+public float speed = 10f;
 
-プレイヤの移動速度を設定します。例えば、5fとすると、速さが5のスピードで動きます。
+プレイヤの移動速度を設定します。例えば、10fとすると、速さが10のスピードで動きます。
 void Update()
 
 Updateメソッドは、ゲームのフレームごとに呼び出されます。つまり、1秒間に何回も実行されます。
 float moveHorizontal = Input.GetAxis("Horizontal");
 
 Input.GetAxis("Horizontal")は、キーボードの左右の矢印キーやAとDキーの入力を取得します。例えば、右矢印キーを押すと1、左矢印キーを押すと-1の値を返します。
-float moveVertical = Input.GetAxis("Vertical");
+Vector2 movement = new Vector2(moveHorizontal, 0);
 
-Input.GetAxis("Vertical")は、キーボードの上下の矢印キーやWとSキーの入力を取得します。例えば、上矢印キーを押すと1、下矢印キーを押すと-1の値を返します。
-Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-
-Vector2は2次元のベクトル（方向）を表します。ここでは、横方向（X軸）と縦方向（Y軸）の入力を使って、プレイヤの移動方向を決めています。
+Vector2は2次元のベクトル（方向）を表します。ここでは、横方向（X軸）の入力を使って、プレイヤの移動方向を決めています。
 transform.Translate(movement * speed * Time.deltaTime);
 
 transform.Translateは、オブジェクトを指定した方向に移動させるメソッドです。movementの方向に、speedの速さで、Time.deltaTime（1フレームの時間）を掛けて移動します。
 
- ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
  **日本語解説付きのスクリプトの説明**
-  - `public int score = 0;`  
-    - プレイヤーのスコアを保持する変数です。ゲームの開始時は0です。
+  - `public float currentHP = 100f;`  
+    - プレイヤーの現在のHPを保持する変数です。ゲームの開始時は100です。
 
   - `void OnTriggerEnter2D(Collider2D other)`  
     - このメソッドは、プレイヤーが他のオブジェクトに触れたときに呼び出されます。`Collider2D`は2Dのコライダーを意味します。
@@ -34,20 +31,12 @@ transform.Translateは、オブジェクトを指定した方向に移動させ�
   - `if (other.gameObject.CompareTag("arrow"))`  
     - 触れたオブジェクトが「arrow」というタグを持っているかどうかを確認します。タグは、オブジェクトにラベルを付けるためのものです。
 
-  - `score += 1;`  
-    - スコアを1増やします。
+  - `TakeDamage(10f);`  
+    - HPを10減らします。
 
   - `Destroy(other.gameObject);`  
-    - 触れたオブジェクト（アイテム）を消します。
+    - 触れたオブジェクト（矢）を消します。
 
-#### コライダーの追加
-- **プレイヤーとアイテムにコライダーを追加しよう**
-  - プレイヤーオブジェクトを選択し、「インスペクター」ウィンドウで「Add Component（コンポーネントを追加）」をクリックします。
-  - 「Box Collider 2D」または「Circle Collider 2D」を選びます。プレイヤーの形に合ったコライダーを選びます。
-  - 同様に、アイテムオブジェクトにもコライダーを追加します。
-  - コライダーの「Is Trigger」にチェックを入れます。これにより、当たり判定が「トリガー」として機能し、物理的な衝突はしませんが、触れたことを検出できます。
- 
- 
 -----------------------------------
 日本語解説
 public GameManager gameManager;
@@ -65,52 +54,77 @@ currentHP -= damage;
 gameManager.UpdateHP(currentHP);
 
 これは、減ったHPをGameManagerに通知し、HPゲージを更新するためのメソッドです。
-
-
  */
 
 public class PlayerController : MonoBehaviour
 {
-    // プレイヤの移動速度を設定します
-    public float speed = 10f;
-
-    public int score = 0; // プレイヤーのスコアを保持します
-
-    public GameManager_2 gameManager_2; // GameManagerを参照
+    public float speed = 10f; // プレイヤの移動速度
+    public GameManager_2 gameManager; // GameManagerを参照
     public float currentHP = 100f; // プレイヤーの現在のHP
 
+    private Animator animator; // アニメーターを参照する変数
+    private bool isFacingRight = true; // プレイヤーが右を向いているかどうかを示すフラグ
+
+    void Start()
+    {
+        // アニメーターコンポーネントを取得します
+        animator = GetComponent<Animator>();
+    }
 
     void Update()
     {
         // 横方向の入力を取得します（矢印キーの左右やAとDキー）
         float moveHorizontal = Input.GetAxis("Horizontal");
-        // 縦方向の入力を取得します（矢印キーの上下やWとSキー）
-       // float moveVertical = Input.GetAxis("Vertical");
 
-        // 移動する方向を決めます。横方向の入力と縦方向の入力を使います。
-        Vector2 movement = new Vector2(moveHorizontal,0);
-        // moveVertical
-        // プレイヤを移動させます。
-        // movementの方向にspeedの速さで、時間に合わせて移動します。
+        // 移動する方向を決めます。横方向の入力を使います。
+        Vector2 movement = new Vector2(moveHorizontal, 0);
+
+        // プレイヤを移動させます。movementの方向にspeedの速さで、時間に合わせて移動します。
         transform.Translate(movement * speed * Time.deltaTime);
-    }
 
+        // 横方向の入力が0でない場合、アニメーションを再生します
+        if (moveHorizontal != 0)
+        {
+            animator.SetBool("isWalking", true);
+
+            // 入力に応じてプレイヤーの向きを変更します
+            if (moveHorizontal > 0 && !isFacingRight)
+            {
+                Flip();
+            }
+            else if (moveHorizontal < 0 && isFacingRight)
+            {
+                Flip();
+            }
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // アイテムに触れたとき
+        // 矢に触れたとき
         if (other.gameObject.CompareTag("arrow"))
         {
-            score += 1; // スコアを1増やします
-            TakeDamage(10f); // HPを10減らします 
-            Destroy(other.gameObject); // アイテムを消します
+            TakeDamage(10f); // HPを10減らします
+            Destroy(other.gameObject); // 矢を消します
         }
     }
 
     void TakeDamage(float damage)
     {
         currentHP -= damage; // HPを減らす
-        gameManager_2.UpdateHP(currentHP); // HPゲージを更新
+        gameManager.UpdateHP(currentHP); // HPゲージを更新
+    }
+
+    void Flip()
+    {
+        // プレイヤーの向きを反転させます
+        isFacingRight = !isFacingRight;
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
 }
-
