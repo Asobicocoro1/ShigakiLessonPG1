@@ -4,85 +4,41 @@ using UnityEngine;
 
 /*
 
-もちろんです。講義5の内容を2Dゲームを前提に、小学生向けにわかりやすく説明し直しますね。
 
-### 講義5: Physicsを使わない動かし方を学ぼう（2Dゲーム編）
 
-#### 矢を落下させる
-- **矢オブジェクトをシーンに配置しよう**
-  - シーンに新しいオブジェクトとして矢を追加します。
-  - 「ヒエラルキー」ウィンドウで右クリックして、「2Dオブジェクト」→「スプライト」を選びます。
-  - このスプライトを矢として使います。名前を「Arrow」に変えましょう。
-  - 「インスペクター」ウィンドウで、位置や大きさを調整して、シーンの上の方に配置します。
-
-#### 矢の配置
-- **矢オブジェクトを適切な位置に配置しよう**
-  - 矢が落ちる場所を決めます。
-  - 矢を空中に配置し、落ち始める位置を設定します。
-
-#### 矢のスクリプトを作る
-- **矢の動作を制御するスクリプトを作成しよう**
-  - 矢が重力で落ちるようにスクリプトを作成します。
-  - 「プロジェクト」ウィンドウで右クリックして、「Create（作成）」→「C# Script」を選びます。
-  - スクリプトに「ArrowController」という名前を付けます。
-
-- **スクリプトの内容**
-  - スクリプトをダブルクリックして、Visual Studio（または他のコードエディタ）で開きます。
-  - 以下のコードをスクリプトに書きます：
-
-```csharp
+学習の目的の明確化 (1分)
+目的: UnityでのPrefabの使用方法と当たり判定の実装を学び、効率的にオブジェクトを管理し、ゲーム内での衝突検出を行う技術を習得する。
+講義 5 (20分)
+内容: Prefabの作成と使用方法、ジェネレータスクリプトの実装方法を説明する。
+Prefabの基本概念と利点。
+Prefabの作成と実際の使用例。
+ジェネレータスクリプトの作成とアタッチ。
+Prefabの作成方法
+オブジェクトの作成
+シーン内でゲームオブジェクトを作成します（例えば、Cubeや2Dスプライト）。
+Prefabとして保存
+作成したオブジェクトをプロジェクトウィンドウの「Assets」フォルダ内にドラッグします。これでオブジェクトがPrefabとして保存されます。
+ジェネレータスクリプトの作成とアタッチ
+以下のようなジェネレータスクリプトを作成し、空のオブジェクトにアタッチします：
+csharp
+コードをコピーする
 using UnityEngine;
 
-public class ArrowController : MonoBehaviour
+public class ObjectGenerator : MonoBehaviour
 {
-    // 矢の落下速度を設定します
-    public float fallSpeed = 5f;
+    public GameObject prefab; // 生成するPrefab
+    public float spawnTime = 3f; // 生成間隔
 
-    void Update()
+    void Start()
     {
-        // 矢を下に移動させます
-        transform.Translate(Vector2.down * fallSpeed * Time.deltaTime);
+        InvokeRepeating("SpawnObject", spawnTime, spawnTime);
+    }
 
-        // 矢が画面外に出たら破棄します
-        if (transform.position.y < -10)
-        {
-            Destroy(gameObject);
-        }
+    void SpawnObject()
+    {
+        Instantiate(prefab, transform.position, transform.rotation);
     }
 }
-```
-
-- **日本語解説付きのスクリプトの説明**
-  - `public float fallSpeed = 5f;`  
-    - 矢の落下速度を設定します。例えば、5fとすると、速さが5のスピードで落ちます。
-
-  - `void Update()`  
-    - `Update`メソッドは、ゲームのフレームごとに呼び出されます。つまり、1秒間に何回も実行されます。
-
-  - `transform.Translate(Vector2.down * fallSpeed * Time.deltaTime);`  
-    - `transform.Translate`は、オブジェクトを指定した方向に移動させるメソッドです。`Vector2.down`は下方向を示し、`fallSpeed`の速さで、`Time.deltaTime`（1フレームの時間）を掛けて移動します。
-
-  - `if (transform.position.y < -10)`  
-    - 矢のY軸の位置が-10より下になったら、つまり画面外に出たら、
-
-  - `Destroy(gameObject);`  
-    - `Destroy`メソッドを使って、矢のオブジェクトを消します。
-
-#### 矢のスクリプトをアタッチする
-- **スクリプトを矢オブジェクトにアタッチしよう**
-  - Unityに戻って、「ヒエラルキー」ウィンドウで矢オブジェクト（Arrow）を選びます。
-  - 「インスペクター」ウィンドウで「Add Component（コンポーネントを追加）」ボタンをクリックし、「ArrowController」スクリプトを選びます。
-  - これでスクリプトが矢オブジェクトにアタッチされ、矢が落ちるようになります。
-
-#### 画面外に出た矢を破棄する
-- **矢が画面外に出た時にオブジェクトを破棄する処理を実装しよう**
-  - スクリプト内で、矢が画面外（例えばY軸が-10以下）に出た時に、`Destroy(gameObject)`メソッドを使って矢を消します。
-  - これにより、無駄なオブジェクトがシーンに残らず、ゲームのパフォーマンスが向上します。
-
-#### まとめ
-- 矢オブジェクトを作成し、落下動作をスクリプトで制御することで、基本的な物理動作を学びました。画面外に出た矢を消すことで、ゲームのパフォーマンスも向上させることができます。
-
-これで、講義5の内容がわかりやすくなったかな？分からないところがあったら、気軽に質問してね！
  */
 public class Lecture5 : MonoBehaviour
 {
