@@ -1,48 +1,87 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /*
- ���{�����t���̃X�N���v�g�̐���
+ 日本語解説付きのスクリプトの説明
 public float speed = 10f;
 
-�v���C���̈ړ����x��ݒ肵�܂��B�Ⴆ�΁A10f�Ƃ���ƁA������10�̃X�s�[�h�œ����܂��B
+プレイヤの移動速度を設定します。例えば、10fとすると、速さが10のスピードで動きます。
 void Update()
 
-Update���\�b�h�́A�Q�[���̃t���[�����ƂɌĂяo����܂��B�܂�A1�b�Ԃɉ�������s����܂��B
+Updateメソッドは、ゲームのフレームごとに呼び出されます。つまり、1秒間に何回も実行されます。
 float moveHorizontal = Input.GetAxis("Horizontal");
 
-Input.GetAxis("Horizontal")�́A�L�[�{�[�h�̍��E�̖��L�[��A��D�L�[�̓��͂��擾���܂��B�Ⴆ�΁A�E���L�[��������1�A�����L�[��������-1�̒l��Ԃ��܂��B
+Input.GetAxis("Horizontal")は、キーボードの左右の矢印キーやAとDキーの入力を取得します。例えば、右矢印キーを押すと1、左矢印キーを押すと-1の値を返します。
 float moveVertical = Input.GetAxis("Vertical");
 
-Input.GetAxis("Vertical")�́A�L�[�{�[�h�̏㉺�̖��L�[��W��S�L�[�̓��͂��擾���܂��B�Ⴆ�΁A����L�[��������1�A�����L�[��������-1�̒l��Ԃ��܂��B
+Input.GetAxis("Vertical")は、キーボードの上下の矢印キーやWとSキーの入力を取得します。例えば、上矢印キーを押すと1、下矢印キーを押すと-1の値を返します。
 Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 
-Vector3��3�����̃x�N�g���i�����j��\���܂��B�����ł́A�������iX���j�Əc�����iZ���j�̓��͂��g���āA�v���C���̈ړ����������߂Ă��܂��B
+Vector3は3次元のベクトル（方向）を表します。ここでは、横方向（X軸）と縦方向（Z軸）の入力を使って、プレイヤの移動方向を決めています。
 transform.Translate(movement * speed * Time.deltaTime);
 
-transform.Translate�́A�I�u�W�F�N�g���w�肵�������Ɉړ������郁�\�b�h�ł��Bmovement�̕����ɁAspeed�̑����ŁATime.deltaTime�i1�t���[���̎��ԁj���|���Ĉړ����܂��B
+transform.Translateは、オブジェクトを指定した方向に移動させるメソッドです。movementの方向に、speedの速さで、Time.deltaTime（1フレームの時間）を掛けて移動します。
+
+ ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ **日本語解説付きのスクリプトの説明**
+  - `public int score = 0;`  
+    - プレイヤーのスコアを保持する変数です。ゲームの開始時は0です。
+
+  - `void OnTriggerEnter2D(Collider2D other)`  
+    - このメソッドは、プレイヤーが他のオブジェクトに触れたときに呼び出されます。`Collider2D`は2Dのコライダーを意味します。
+
+  - `if (other.gameObject.CompareTag("Item"))`  
+    - 触れたオブジェクトが「Item」というタグを持っているかどうかを確認します。タグは、オブジェクトにラベルを付けるためのものです。
+
+  - `score += 1;`  
+    - スコアを1増やします。
+
+  - `Destroy(other.gameObject);`  
+    - 触れたオブジェクト（アイテム）を消します。
+
+#### コライダーの追加
+- **プレイヤーとアイテムにコライダーを追加しよう**
+  - プレイヤーオブジェクトを選択し、「インスペクター」ウィンドウで「Add Component（コンポーネントを追加）」をクリックします。
+  - 「Box Collider 2D」または「Circle Collider 2D」を選びます。プレイヤーの形に合ったコライダーを選びます。
+  - 同様に、アイテムオブジェクトにもコライダーを追加します。
+  - コライダーの「Is Trigger」にチェックを入れます。これにより、当たり判定が「トリガー」として機能し、物理的な衝突はしませんが、触れたことを検出できます。
+ 
+ 
  */
 
 public class PlayerController : MonoBehaviour
 {
-    // �v���C���̈ړ����x��ݒ肵�܂�
+    // プレイヤの移動速度を設定します
     public float speed = 10f;
+
+    public int score = 0; // プレイヤーのスコアを保持します
 
     void Update()
     {
-        // �������̓��͂��擾���܂��i���L�[�̍��E��A��D�L�[�j
+        // 横方向の入力を取得します（矢印キーの左右やAとDキー）
         float moveHorizontal = Input.GetAxis("Horizontal");
-        // �c�����̓��͂��擾���܂��i���L�[�̏㉺��W��S�L�[�j
+        // 縦方向の入力を取得します（矢印キーの上下やWとSキー）
         float moveVertical = Input.GetAxis("Vertical");
 
-        // �ړ�������������߂܂��B�������̓��͂Əc�����̓��͂��g���܂��B
-        //x,y,z�̏�
+        // 移動する方向を決めます。横方向の入力と縦方向の入力を使います。
+        //x,y,zの順
         Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 
-        // �v���C�����ړ������܂��B
-        // movement�̕�����speed�̑����ŁA���Ԃɍ��킹�Ĉړ����܂��B
+        // プレイヤを移動させます。
+        // movementの方向にspeedの速さで、時間に合わせて移動します。
         transform.Translate(movement * speed * Time.deltaTime);
+    }
+
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        // アイテムに触れたとき
+        if (other.gameObject.CompareTag("Item"))
+        {
+            score += 1; // スコアを1増やします
+            Destroy(other.gameObject); // アイテムを消します
+        }
     }
 }
 

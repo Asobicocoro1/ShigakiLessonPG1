@@ -4,14 +4,27 @@ using UnityEngine;
 
 /*
 
+もちろんです。講義5の内容を2Dゲームを前提に、小学生向けにわかりやすく説明し直しますね。
 
-### 講義4: キー操作でプレイヤを動かそう（2Dゲーム編）
+### 講義5: Physicsを使わない動かし方を学ぼう（2Dゲーム編）
 
-#### プレイヤのスクリプトを作る
-- **キー操作でプレイヤを動かすスクリプトを作成しよう**
-  - プレイヤを動かすためには、スクリプト（プログラム）が必要です。
-  - Unityの「プロジェクト」ウィンドウで、右クリックして「Create（作成）」→「C# Script」を選びます。
-  - スクリプトに「PlayerController」という名前を付けます。
+#### 矢を落下させる
+- **矢オブジェクトをシーンに配置しよう**
+  - シーンに新しいオブジェクトとして矢を追加します。
+  - 「ヒエラルキー」ウィンドウで右クリックして、「2Dオブジェクト」→「スプライト」を選びます。
+  - このスプライトを矢として使います。名前を「Arrow」に変えましょう。
+  - 「インスペクター」ウィンドウで、位置や大きさを調整して、シーンの上の方に配置します。
+
+#### 矢の配置
+- **矢オブジェクトを適切な位置に配置しよう**
+  - 矢が落ちる場所を決めます。
+  - 矢を空中に配置し、落ち始める位置を設定します。
+
+#### 矢のスクリプトを作る
+- **矢の動作を制御するスクリプトを作成しよう**
+  - 矢が重力で落ちるようにスクリプトを作成します。
+  - 「プロジェクト」ウィンドウで右クリックして、「Create（作成）」→「C# Script」を選びます。
+  - スクリプトに「ArrowController」という名前を付けます。
 
 - **スクリプトの内容**
   - スクリプトをダブルクリックして、Visual Studio（または他のコードエディタ）で開きます。
@@ -20,57 +33,56 @@ using UnityEngine;
 ```csharp
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class ArrowController : MonoBehaviour
 {
-    // プレイヤの移動速度を設定します
-    public float speed = 5f;
+    // 矢の落下速度を設定します
+    public float fallSpeed = 5f;
 
     void Update()
     {
-        // 横方向の入力を取得します（矢印キーの左右やAとDキー）
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        // 縦方向の入力を取得します（矢印キーの上下やWとSキー）
-        float moveVertical = Input.GetAxis("Vertical");
+        // 矢を下に移動させます
+        transform.Translate(Vector2.down * fallSpeed * Time.deltaTime);
 
-        // 移動する方向を決めます。横方向の入力と縦方向の入力を使います。
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-
-        // プレイヤを移動させます。
-        // movementの方向にspeedの速さで、時間に合わせて移動します。
-        transform.Translate(movement * speed * Time.deltaTime);
+        // 矢が画面外に出たら破棄します
+        if (transform.position.y < -10)
+        {
+            Destroy(gameObject);
+        }
     }
 }
 ```
 
 - **日本語解説付きのスクリプトの説明**
-  - `public float speed = 5f;`  
-    - プレイヤの移動速度を設定します。例えば、5fとすると、速さが5のスピードで動きます。
+  - `public float fallSpeed = 5f;`  
+    - 矢の落下速度を設定します。例えば、5fとすると、速さが5のスピードで落ちます。
 
   - `void Update()`  
     - `Update`メソッドは、ゲームのフレームごとに呼び出されます。つまり、1秒間に何回も実行されます。
 
-  - `float moveHorizontal = Input.GetAxis("Horizontal");`  
-    - `Input.GetAxis("Horizontal")`は、キーボードの左右の矢印キーやAとDキーの入力を取得します。例えば、右矢印キーを押すと1、左矢印キーを押すと-1の値を返します。
+  - `transform.Translate(Vector2.down * fallSpeed * Time.deltaTime);`  
+    - `transform.Translate`は、オブジェクトを指定した方向に移動させるメソッドです。`Vector2.down`は下方向を示し、`fallSpeed`の速さで、`Time.deltaTime`（1フレームの時間）を掛けて移動します。
 
-  - `float moveVertical = Input.GetAxis("Vertical");`  
-    - `Input.GetAxis("Vertical")`は、キーボードの上下の矢印キーやWとSキーの入力を取得します。例えば、上矢印キーを押すと1、下矢印キーを押すと-1の値を返します。
+  - `if (transform.position.y < -10)`  
+    - 矢のY軸の位置が-10より下になったら、つまり画面外に出たら、
 
-  - `Vector2 movement = new Vector2(moveHorizontal, moveVertical);`  
-    - `Vector2`は2次元のベクトル（方向）を表します。ここでは、横方向（X軸）と縦方向（Y軸）の入力を使って、プレイヤの移動方向を決めています。
+  - `Destroy(gameObject);`  
+    - `Destroy`メソッドを使って、矢のオブジェクトを消します。
 
-  - `transform.Translate(movement * speed * Time.deltaTime);`  
-    - `transform.Translate`は、オブジェクトを指定した方向に移動させるメソッドです。`movement`の方向に、`speed`の速さで、`Time.deltaTime`（1フレームの時間）を掛けて移動します。
+#### 矢のスクリプトをアタッチする
+- **スクリプトを矢オブジェクトにアタッチしよう**
+  - Unityに戻って、「ヒエラルキー」ウィンドウで矢オブジェクト（Arrow）を選びます。
+  - 「インスペクター」ウィンドウで「Add Component（コンポーネントを追加）」ボタンをクリックし、「ArrowController」スクリプトを選びます。
+  - これでスクリプトが矢オブジェクトにアタッチされ、矢が落ちるようになります。
 
-#### プレイヤのスクリプトをアタッチする
-- **スクリプトをプレイヤオブジェクトにアタッチしよう**
-  - Unityに戻って、「ヒエラルキー」ウィンドウでプレイヤオブジェクト（例えば2Dのスプライト）を選びます。
-  - 「インスペクター」ウィンドウで「Add Component（コンポーネントを追加）」ボタンをクリックし、「PlayerController」スクリプトを選びます。
-  - これでスクリプトがプレイヤオブジェクトにアタッチされ、キー操作で動かせるようになります。
+#### 画面外に出た矢を破棄する
+- **矢が画面外に出た時にオブジェクトを破棄する処理を実装しよう**
+  - スクリプト内で、矢が画面外（例えばY軸が-10以下）に出た時に、`Destroy(gameObject)`メソッドを使って矢を消します。
+  - これにより、無駄なオブジェクトがシーンに残らず、ゲームのパフォーマンスが向上します。
 
 #### まとめ
-- プレイヤオブジェクトにスクリプトをアタッチし、キー操作で動かせるようにすることで、ゲームの基本的な操作ができるようになります。これからは、プレイヤをもっと面白く動かす方法を学びます。
+- 矢オブジェクトを作成し、落下動作をスクリプトで制御することで、基本的な物理動作を学びました。画面外に出た矢を消すことで、ゲームのパフォーマンスも向上させることができます。
 
-これで、講義4の内容がわかりやすくなったかな？分からないところがあったら、気軽に質問してね！
+これで、講義5の内容がわかりやすくなったかな？分からないところがあったら、気軽に質問してね！
  */
 public class Lecture5 : MonoBehaviour
 {
