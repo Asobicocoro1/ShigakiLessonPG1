@@ -31,8 +31,8 @@ transform.Translateは、オブジェクトを指定した方向に移動させ�
   - `void OnTriggerEnter2D(Collider2D other)`  
     - このメソッドは、プレイヤーが他のオブジェクトに触れたときに呼び出されます。`Collider2D`は2Dのコライダーを意味します。
 
-  - `if (other.gameObject.CompareTag("Item"))`  
-    - 触れたオブジェクトが「Item」というタグを持っているかどうかを確認します。タグは、オブジェクトにラベルを付けるためのものです。
+  - `if (other.gameObject.CompareTag("arrow"))`  
+    - 触れたオブジェクトが「arrow」というタグを持っているかどうかを確認します。タグは、オブジェクトにラベルを付けるためのものです。
 
   - `score += 1;`  
     - スコアを1増やします。
@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
 
     public int score = 0; // プレイヤーのスコアを保持します
 
-    public GameManager_2 gameManager; // GameManagerを参照
+    public GameManager_2 gameManager_2; // GameManagerを参照
     public float currentHP = 100f; // プレイヤーの現在のHP
 
 
@@ -85,11 +85,11 @@ public class PlayerController : MonoBehaviour
         // 横方向の入力を取得します（矢印キーの左右やAとDキー）
         float moveHorizontal = Input.GetAxis("Horizontal");
         // 縦方向の入力を取得します（矢印キーの上下やWとSキー）
-        float moveVertical = Input.GetAxis("Vertical");
+       // float moveVertical = Input.GetAxis("Vertical");
 
         // 移動する方向を決めます。横方向の入力と縦方向の入力を使います。
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-
+        Vector2 movement = new Vector2(moveHorizontal,0);
+        // moveVertical
         // プレイヤを移動させます。
         // movementの方向にspeedの速さで、時間に合わせて移動します。
         transform.Translate(movement * speed * Time.deltaTime);
@@ -99,9 +99,10 @@ public class PlayerController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         // アイテムに触れたとき
-        if (other.gameObject.CompareTag("Item"))
+        if (other.gameObject.CompareTag("arrow"))
         {
             score += 1; // スコアを1増やします
+            TakeDamage(10f); // HPを10減らします 
             Destroy(other.gameObject); // アイテムを消します
         }
     }
@@ -109,7 +110,7 @@ public class PlayerController : MonoBehaviour
     void TakeDamage(float damage)
     {
         currentHP -= damage; // HPを減らす
-        gameManager.UpdateHP(currentHP); // HPゲージを更新
+        gameManager_2.UpdateHP(currentHP); // HPゲージを更新
     }
 }
 

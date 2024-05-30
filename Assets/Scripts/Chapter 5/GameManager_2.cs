@@ -19,7 +19,18 @@ hpSlider.value = newHP;
 
 public class GameManager_2 : MonoBehaviour
 {
+    
+
     public Slider hpSlider; // HPを表示するスライダー
+
+
+    void Start()
+    {
+        // スライダーの最大値を100に設定
+        hpSlider.maxValue = 100;
+        // スライダーの初期値を100に設定
+        hpSlider.value = 100;
+    }
 
     public void UpdateHP(float newHP)
     {
