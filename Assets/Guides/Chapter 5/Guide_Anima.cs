@@ -1,182 +1,182 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /*
-�������ł��BAnimator�E�B���h�E�łł��邱�Ƃ��A�����ƏڍׂɁA�킩��₷���������܂��B
+もちろんです。Animatorウィンドウでできることを、もっと詳細に、わかりやすく説明します。
 
-### Animator�E�B���h�E�̊�{
+### Animatorウィンドウの基本
 
-Animator�E�B���h�E�́A�Q�[���̃L�����N�^�[��I�u�W�F�N�g�ɃA�j���[�V������ݒ肵�A���䂷�邽�߂̃c�[���ł��B�����ł́AAnimator�E�B���h�E�łł����{�I�Ȃ��Ƃɂ��Đ������܂��B
+Animatorウィンドウは、ゲームのキャラクターやオブジェクトにアニメーションを設定し、制御するためのツールです。ここでは、Animatorウィンドウでできる基本的なことについて説明します。
 
-### 1. Animator�E�B���h�E���J��
+### 1. Animatorウィンドウを開く
 
-1. **Animator�E�B���h�E�̊J����**
-   - Unity�̃��j���[����uWindow�i�E�B���h�E�j�v���N���b�N���܂��B
-   - �uAnimation�i�A�j���[�V�����j�v��I�сA�uAnimator�i�A�j���[�^�[�j�v���N���b�N���܂��B
-   - �����Animator�E�B���h�E���\������܂��B
+1. **Animatorウィンドウの開き方**
+   - Unityのメニューから「Window（ウィンドウ）」をクリックします。
+   - 「Animation（アニメーション）」を選び、「Animator（アニメーター）」をクリックします。
+   - これでAnimatorウィンドウが表示されます。
 
-### 2. Animator�E�B���h�E�̍\��
+### 2. Animatorウィンドウの構成
 
-1. **�p�����[�^�[**
-   - �����ɁuParameters�i�p�����[�^�[�j�v�Ƃ����^�u������܂��B�����ɂ̓A�j���[�V�����𐧌䂷�邽�߂̃p�����[�^�[��ǉ��ł��܂��B
-   - �p�����[�^�[�ɂ́uBool�i�u�[���j�v�A�uFloat�i�t���[�g�j�v�A�uInt�i�C���g�j�v�A�uTrigger�i�g���K�[�j�v��4��ނ�����܂��B
+1. **パラメーター**
+   - 左側に「Parameters（パラメーター）」というタブがあります。ここにはアニメーションを制御するためのパラメーターを追加できます。
+   - パラメーターには「Bool（ブール）」、「Float（フロート）」、「Int（イント）」、「Trigger（トリガー）」の4種類があります。
 
-2. **���C���[**
-   - �p�����[�^�[�^�u�̉��ɂ́uLayers�i���C���[�j�v�^�u������܂��B���C���[���g���ƁA�����̃A�j���[�V�������d�˂čĐ����邱�Ƃ��ł��܂��B
+2. **レイヤー**
+   - パラメータータブの下には「Layers（レイヤー）」タブがあります。レイヤーを使うと、複数のアニメーションを重ねて再生することができます。
 
-3. **�A�j���[�V�����X�e�[�g**
-   - �E���̍L���G���A�ɂ́A�A�j���[�V�����X�e�[�g���\������܂��B�����ł́A�A�j���[�V�����̏�Ԃ�J�ځi�g�����W�V�����j��ݒ�ł��܂��B
-   - �uAny State�v�́A�ǂ̃A�j���[�V������Ԃ���ł��J�ڂł�����ʂȏ�Ԃł��B
-   - �uEntry�v�́A�A�j���[�V�����̊J�n�n�_�������܂��B
+3. **アニメーションステート**
+   - 右側の広いエリアには、アニメーションステートが表示されます。ここでは、アニメーションの状態や遷移（トランジション）を設定できます。
+   - 「Any State」は、どのアニメーション状態からでも遷移できる特別な状態です。
+   - 「Entry」は、アニメーションの開始地点を示します。
 
-### 3. �p�����[�^�[�̒ǉ�
+### 3. パラメーターの追加
 
-1. **�p�����[�^�[��ǉ�������@**
-   - �uParameters�i�p�����[�^�[�j�v�^�u���N���b�N���܂��B
-   - �����ɂ���u+�v�{�^�����N���b�N���܂��B
-   - �uBool�i�u�[���j�v��I�т܂��B����́Atrue��false��2�̒l�����p�����[�^�[�ł��B
-   - �p�����[�^�[�ɁuisWalking�v�Ɩ��O��t���܂��B
+1. **パラメーターを追加する方法**
+   - 「Parameters（パラメーター）」タブをクリックします。
+   - 下部にある「+」ボタンをクリックします。
+   - 「Bool（ブール）」を選びます。これは、trueかfalseの2つの値を持つパラメーターです。
+   - パラメーターに「isWalking」と名前を付けます。
 
-### 4. �A�j���[�V�����X�e�[�g�̐ݒ�
+### 4. アニメーションステートの設定
 
-1. **�A�j���[�V�����X�e�[�g�̒ǉ�**
-   - �C���|�[�g�����A�j���[�V�����N���b�v�i�Ⴆ�΁A�uWalkRight�v�j��Animator�E�B���h�E�̋󂢂Ă��镔���Ƀh���b�O���h���b�v���܂��B
-   - ����ŁuWalkRight�v�A�j���[�V�����X�e�[�g���쐬����܂��B
+1. **アニメーションステートの追加**
+   - インポートしたアニメーションクリップ（例えば、「WalkRight」）をAnimatorウィンドウの空いている部分にドラッグ＆ドロップします。
+   - これで「WalkRight」アニメーションステートが作成されます。
 
-2. **�J�ڂ̍쐬**
-   - �uAny State�v���E�N���b�N���A�uMake Transition�i�J�ڂ��쐬�j�v��I�т܂��B
-   - �����uWalkRight�v�X�e�[�g�Ƀh���b�O���Đڑ����܂��B
-   - �t�����̑J�ڂ����l�ɍ쐬���܂��B���x�́uWalkRight�v����uIdle�i�ҋ@�j�v�X�e�[�g�Ƀh���b�O���Đڑ����܂��B
+2. **遷移の作成**
+   - 「Any State」を右クリックし、「Make Transition（遷移を作成）」を選びます。
+   - 矢印を「WalkRight」ステートにドラッグして接続します。
+   - 逆方向の遷移も同様に作成します。今度は「WalkRight」から「Idle（待機）」ステートにドラッグして接続します。
 
-### 5. �J�ڂ̏�����ݒ�
+### 5. 遷移の条件を設定
 
-1. **�J�ڂ̏�����ݒ肷����@**
-   - �쐬�����J�ځi���j���N���b�N���܂��B�C���X�y�N�^�[�E�B���h�E�ɑJ�ڂ̐ݒ肪�\������܂��B
-   - �uConditions�i�����j�v�Z�N�V�����Łu+�v�{�^�����N���b�N���A�V����������ǉ����܂��B
-   - �h���b�v�_�E�����X�g����uisWalking�v��I�����A���̒l��`true`�ɐݒ肵�܂��B
-   - ���l�ɁA�t�����̑J�ځi�uWalkRight�v����uIdle�v�j�ɂ�������ݒ肵�܂��B�����́uisWalking�v��`false`�ɐݒ肵�܂��B
+1. **遷移の条件を設定する方法**
+   - 作成した遷移（矢印）をクリックします。インスペクターウィンドウに遷移の設定が表示されます。
+   - 「Conditions（条件）」セクションで「+」ボタンをクリックし、新しい条件を追加します。
+   - ドロップダウンリストから「isWalking」を選択し、その値を`true`に設定します。
+   - 同様に、逆方向の遷移（「WalkRight」から「Idle」）にも条件を設定します。条件は「isWalking」を`false`に設定します。
 
-### 6. �A�j���[�V�����̊m�F
+### 6. アニメーションの確認
 
-1. **�A�j���[�V�����̊m�F���@**
-   - �v���C���[�I�u�W�F�N�g��I�����AAnimator�E�B���h�E�Őݒ肵���A�j���[�V�������������Đ�����邩�m�F���܂��B
-   - Unity�G�f�B�^�[�㕔�̍Đ��{�^�����N���b�N���ăQ�[�����J�n���܂��B
-   - �v���C���[�����E�Ɉړ�����ƁA�A�j���[�V�������������Đ�����邩�m�F���܂��B
+1. **アニメーションの確認方法**
+   - プレイヤーオブジェクトを選択し、Animatorウィンドウで設定したアニメーションが正しく再生されるか確認します。
+   - Unityエディター上部の再生ボタンをクリックしてゲームを開始します。
+   - プレイヤーが左右に移動すると、アニメーションが正しく再生されるか確認します。
 
-### �X�N���[���V���b�g�t���̎菇
+### スクリーンショット付きの手順
 
-1. **Animator�E�B���h�E���J��**
+1. **Animatorウィンドウを開く**
    ![Animator Window]
-   - ���j���[����uWindow�i�E�B���h�E�j�v>�uAnimation�i�A�j���[�V�����j�v>�uAnimator�i�A�j���[�^�[�j�v��I�т܂��B
+   - メニューから「Window（ウィンドウ）」>「Animation（アニメーション）」>「Animator（アニメーター）」を選びます。
 
-2. **�p�����[�^�[�̒ǉ�**
+2. **パラメーターの追加**
    ![Parameters Tab]
-   - Animator�E�B���h�E�̍����ɂ���uParameters�i�p�����[�^�[�j�v�^�u���N���b�N���܂��B
-   - �u+�v�{�^�����N���b�N���A�uBool�i�u�[���j�v��I�����܂��B
-   - �p�����[�^�[�ɁuisWalking�v�Ƃ������O��t���܂��B
+   - Animatorウィンドウの左側にある「Parameters（パラメーター）」タブをクリックします。
+   - 「+」ボタンをクリックし、「Bool（ブール）」を選択します。
+   - パラメーターに「isWalking」という名前を付けます。
 
-3. **�J�ڂ̍쐬**
+3. **遷移の作成**
    ![Make Transition]
-   - �uAny State�v���E�N���b�N���āuMake Transition�v��I�т܂��B
-   - �����h���b�O���āuWalkRight�v�ɐڑ����܂��B
+   - 「Any State」を右クリックして「Make Transition」を選びます。
+   - 矢印をドラッグして「WalkRight」に接続します。
 
-4. **�J�ڂ̐ݒ�**
+4. **遷移の設定**
    ![Transition Conditions]
-   - �J�ڂ��N���b�N���ăC���X�y�N�^�[�E�B���h�E���J���܂��B
-   - �uConditions�i�����j�v�Z�N�V�����Łu+�v�{�^�����N���b�N���ĐV����������ǉ����܂��B
-   - �h���b�v�_�E�����X�g����uisWalking�v��I�����A���̒l��`true`�ɐݒ肵�܂��B
+   - 遷移をクリックしてインスペクターウィンドウを開きます。
+   - 「Conditions（条件）」セクションで「+」ボタンをクリックして新しい条件を追加します。
+   - ドロップダウンリストから「isWalking」を選択し、その値を`true`に設定します。
 
-����ŁAAnimator�E�B���h�E�̊�{�I�Ȏg�����ƁA�A�j���[�V�����̐ݒ���@���킩��܂��B���₪����΁A�C�y�ɕ����Ă��������ˁI
+これで、Animatorウィンドウの基本的な使い方と、アニメーションの設定方法がわかります。質問があれば、気軽に聞いてくださいね！
 
  ----------------------------------------------------------------------------------------------------------------------------------
 
-�������ł��B�ȉ��ɁA�킩��₷���悤�ɁAAnimation�E�B���h�E�łł��邱�Ƃ��ڍׂɐ������܂��B
+もちろんです。以下に、わかりやすいように、Animationウィンドウでできることを詳細に説明します。
 
-### Animation�E�B���h�E�̊�{
+### Animationウィンドウの基本
 
-Animation�E�B���h�E�́AUnity�ŃA�j���[�V�������쐬�A�ҏW�A�Đ����邽�߂̃c�[���ł��B�����ł́AAnimation�E�B���h�E�łł����{�I�Ȃ��Ƃɂ��Đ������܂��B
+Animationウィンドウは、Unityでアニメーションを作成、編集、再生するためのツールです。ここでは、Animationウィンドウでできる基本的なことについて説明します。
 
-### 1. Animation�E�B���h�E���J��
+### 1. Animationウィンドウを開く
 
-1. **Animation�E�B���h�E�̊J����**
-   - Unity�̃��j���[����uWindow�i�E�B���h�E�j�v���N���b�N���܂��B
-   - �uAnimation�i�A�j���[�V�����j�v��I�сA�uAnimation�i�A�j���[�V�����j�v���N���b�N���܂��B
-   - �����Animation�E�B���h�E���\������܂��B
+1. **Animationウィンドウの開き方**
+   - Unityのメニューから「Window（ウィンドウ）」をクリックします。
+   - 「Animation（アニメーション）」を選び、「Animation（アニメーション）」をクリックします。
+   - これでAnimationウィンドウが表示されます。
 
-### 2. Animation�E�B���h�E�̍\��
+### 2. Animationウィンドウの構成
 
-1. **�^�C�����C��**
-   - �����ɕ\�������̂��^�C�����C���ł��B�����ŃA�j���[�V�����̊e�t���[����ҏW���܂��B
-   - �^�C�����C���ɂ́A�A�j���[�V�����̍Đ����Ԃ��\������܂��B
+1. **タイムライン**
+   - 下部に表示されるのがタイムラインです。ここでアニメーションの各フレームを編集します。
+   - タイムラインには、アニメーションの再生時間が表示されます。
 
-2. **�v���p�e�B**
-   - �^�C�����C���̍����ɂ́A�A�j���[�V��������I�u�W�F�N�g�̃v���p�e�B���\������܂��B
-   - �ʒu�iPosition�j�A��]�iRotation�j�A�X�P�[���iScale�j�Ȃǂ̃v���p�e�B���A�j���[�V�����ł��܂��B
+2. **プロパティ**
+   - タイムラインの左側には、アニメーションするオブジェクトのプロパティが表示されます。
+   - 位置（Position）、回転（Rotation）、スケール（Scale）などのプロパティをアニメーションできます。
 
-### 3. �V�����A�j���[�V�����N���b�v�̍쐬
+### 3. 新しいアニメーションクリップの作成
 
-1. **�I�u�W�F�N�g��I��**
-   - �V�[���E�B���h�E�ŁA�A�j���[�V�������������I�u�W�F�N�g��I�����܂��B�Ⴆ�΁A�v���C���[�̃X�v���C�g�ł��B
+1. **オブジェクトを選択**
+   - シーンウィンドウで、アニメーションをつけたいオブジェクトを選択します。例えば、プレイヤーのスプライトです。
 
-2. **�V�����A�j���[�V�����N���b�v���쐬**
-   - Animation�E�B���h�E�ŁuCreate�i�쐬�j�v�{�^�����N���b�N���܂��B
-   - �V�����A�j���[�V�����N���b�v�ɖ��O��t���܂��B�Ⴆ�΁uWalkRight�v�Ƃ��܂��B
-   - �ۑ����I��ŁuSave�i�ۑ��j�v���N���b�N���܂��B
+2. **新しいアニメーションクリップを作成**
+   - Animationウィンドウで「Create（作成）」ボタンをクリックします。
+   - 新しいアニメーションクリップに名前を付けます。例えば「WalkRight」とします。
+   - 保存先を選んで「Save（保存）」をクリックします。
 
-### 4. �A�j���[�V�����̕ҏW
+### 4. アニメーションの編集
 
-1. **�t���[���ɃX�v���C�g��ǉ�**
-   - �C���|�[�g����4���̕��s�摜���v���W�F�N�g�E�B���h�E����Animation�E�B���h�E�Ƀh���b�O���h���b�v���āA�A�j���[�V�����̊e�t���[���ɐݒ肵�܂��B
-   - �Ⴆ�΁A0�t���[���ڂ�1���ڂ̃X�v���C�g���A10�t���[���ڂ�2���ڂ̃X�v���C�g��ǉ����܂��B
+1. **フレームにスプライトを追加**
+   - インポートした4枚の歩行画像をプロジェクトウィンドウからAnimationウィンドウにドラッグ＆ドロップして、アニメーションの各フレームに設定します。
+   - 例えば、0フレーム目に1枚目のスプライトを、10フレーム目に2枚目のスプライトを追加します。
 
-2. **�A�j���[�V�������Đ�**
-   - �^�C�����C���̍Đ��{�^�����N���b�N���āA�A�j���[�V�������Đ����Ċm�F���܂��B
-   - �Đ����ɃX�v���C�g���A�����ĕ\������邱�ƂŁA���s�A�j���[�V�������Đ�����܂��B
+2. **アニメーションを再生**
+   - タイムラインの再生ボタンをクリックして、アニメーションを再生して確認します。
+   - 再生中にスプライトが連続して表示されることで、歩行アニメーションが再生されます。
 
-### 5. �L�[�t���[���̒ǉ�
+### 5. キーフレームの追加
 
-1. **�L�[�t���[���̒ǉ�**
-   - �^�C�����C����ŉE�N���b�N���A�uAdd Keyframe�i�L�[�t���[���̒ǉ��j�v��I�т܂��B
-   - �I�u�W�F�N�g�̃v���p�e�B��ύX����ƁA�����I�ɃL�[�t���[�����ǉ�����܂��B
+1. **キーフレームの追加**
+   - タイムライン上で右クリックし、「Add Keyframe（キーフレームの追加）」を選びます。
+   - オブジェクトのプロパティを変更すると、自動的にキーフレームが追加されます。
 
-2. **�L�[�t���[���̕ҏW**
-   - �^�C�����C����̃L�[�t���[�����h���b�O���Ĉʒu��ύX���܂��B
-   - �v���p�e�B�p�l���ŁA�L�[�t���[���̒l�𒼐ڕҏW���邱�Ƃ��ł��܂��B
+2. **キーフレームの編集**
+   - タイムライン上のキーフレームをドラッグして位置を変更します。
+   - プロパティパネルで、キーフレームの値を直接編集することもできます。
 
-### 6. �A�j���[�V�����̕ۑ��ƍĐ�
+### 6. アニメーションの保存と再生
 
-1. **�A�j���[�V�����N���b�v�̕ۑ�**
-   - �ҏW������������A�A�j���[�V�����N���b�v��ۑ����܂��B
-   - �v���W�F�N�g�E�B���h�E�ɃA�j���[�V�����N���b�v���\������܂��B
+1. **アニメーションクリップの保存**
+   - 編集が完了したら、アニメーションクリップを保存します。
+   - プロジェクトウィンドウにアニメーションクリップが表示されます。
 
-2. **�A�j���[�V�����̍Đ�**
-   - �V�[���E�B���h�E�ŃI�u�W�F�N�g��I�����AAnimator�E�B���h�E�Őݒ肵���A�j���[�V�������������Đ�����邩�m�F���܂��B
-   - Unity�G�f�B�^�[�㕔�̍Đ��{�^�����N���b�N���ăQ�[�����J�n���܂��B
-   - �v���C���[�����E�Ɉړ�����ƁA�A�j���[�V�������������Đ�����邩�m�F���܂��B
+2. **アニメーションの再生**
+   - シーンウィンドウでオブジェクトを選択し、Animatorウィンドウで設定したアニメーションが正しく再生されるか確認します。
+   - Unityエディター上部の再生ボタンをクリックしてゲームを開始します。
+   - プレイヤーが左右に移動すると、アニメーションが正しく再生されるか確認します。
 
-### �X�N���[���V���b�g�t���̎菇
+### スクリーンショット付きの手順
 
-1. **Animation�E�B���h�E���J��**
+1. **Animationウィンドウを開く**
    ![Animation Window]
-   - ���j���[����uWindow�i�E�B���h�E�j�v>�uAnimation�i�A�j���[�V�����j�v>�uAnimation�i�A�j���[�V�����j�v��I�т܂��B
+   - メニューから「Window（ウィンドウ）」>「Animation（アニメーション）」>「Animation（アニメーション）」を選びます。
 
-2. **�V�����A�j���[�V�����N���b�v���쐬**
+2. **新しいアニメーションクリップを作成**
    ![Create Animation]
-   - Animation�E�B���h�E�ŁuCreate�i�쐬�j�v�{�^�����N���b�N���܂��B
-   - �V�����A�j���[�V�����N���b�v�ɖ��O��t���ĕۑ����܂��B
+   - Animationウィンドウで「Create（作成）」ボタンをクリックします。
+   - 新しいアニメーションクリップに名前を付けて保存します。
 
-3. **�t���[���ɃX�v���C�g��ǉ�**
+3. **フレームにスプライトを追加**
    ![Add Keyframe]
-   - �C���|�[�g�����X�v���C�g���^�C�����C���Ƀh���b�O���h���b�v���܂��B
-   - �e�t���[���ɃX�v���C�g��z�u���ăA�j���[�V������ҏW���܂��B
+   - インポートしたスプライトをタイムラインにドラッグ＆ドロップします。
+   - 各フレームにスプライトを配置してアニメーションを編集します。
 
-4. **�L�[�t���[���̕ҏW**
+4. **キーフレームの編集**
    ![Edit Keyframe
-   - �^�C�����C����̃L�[�t���[�����h���b�O���Ĉʒu��ύX���܂��B
-   - �v���p�e�B�p�l���ŃL�[�t���[���̒l��ҏW���܂��B
+   - タイムライン上のキーフレームをドラッグして位置を変更します。
+   - プロパティパネルでキーフレームの値を編集します。
 
-����ŁAAnimation�E�B���h�E�̊�{�I�Ȏg�����ƁA�A�j���[�V�����̐ݒ���@���킩��܂��B���₪����΁A�C�y�ɕ����Ă��������ˁI
+これで、Animationウィンドウの基本的な使い方と、アニメーションの設定方法がわかります。質問があれば、気軽に聞いてくださいね！
 
 
  */
