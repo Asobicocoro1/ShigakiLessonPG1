@@ -6,6 +6,7 @@ TagManager:
   tags:
   - arrow
   - test
+  - Ground
   layers:
   - Default
   - TransparentFX
