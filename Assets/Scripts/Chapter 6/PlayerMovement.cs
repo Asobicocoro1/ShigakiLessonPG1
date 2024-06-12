@@ -1,41 +1,41 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// �v���C���[�̈ړ��ƃW�����v�𐧌䂷��X�N���v�g
+/// プレイヤーの移動とジャンプを制御するスクリプト
 /// </summary>
 public class PlayerMovement : MonoBehaviour
 {
-    // �v���C���[�̈ړ����x
+    // プレイヤーの移動速度
     public float moveSpeed = 5f;
-    // �W�����v�̗�
+    // ジャンプの力
     public float jumpForce = 5f;
-    // Rigidbody2D�R���|�[�l���g�ւ̎Q��
+    // Rigidbody2Dコンポーネントへの参照
     private Rigidbody2D rb;
-    // �v���C���[���n�ʂɐڂ��Ă��邩�ǂ����̃t���O
+    // プレイヤーが地面に接しているかどうかのフラグ
     private bool isGrounded;
 
     /// <summary>
-    /// �����ݒ���s�����\�b�h
+    /// 初期設定を行うメソッド
     /// </summary>
     void Start()
     {
-        // Rigidbody2D�R���|�[�l���g���擾
+        // Rigidbody2Dコンポーネントを取得
         rb = GetComponent<Rigidbody2D>();
     }
 
     /// <summary>
-    /// �t���[�����ƂɌĂяo����郁�\�b�h
+    /// フレームごとに呼び出されるメソッド
     /// </summary>
     void Update()
     {
-        // �������͂��擾
+        // 水平入力を取得
         float moveInput = Input.GetAxis("Horizontal");
-        // �������͂ɉ����ăv���C���[���ړ�
+        // 水平入力に応じてプレイヤーを移動
         rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
 
-        // �W�����v���͂����m���A�n�ʂɐڂ��Ă���ꍇ�ɃW�����v
+        // ジャンプ入力を検知し、地面に接している場合にジャンプ
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.velocity = Vector2.up * jumpForce;
@@ -43,29 +43,29 @@ public class PlayerMovement : MonoBehaviour
     }
 
     /// <summary>
-    /// �I�u�W�F�N�g�����̃R���C�_�ƐڐG�����Ƃ��ɌĂ΂�郁�\�b�h
+    /// オブジェクトが他のコライダと接触したときに呼ばれるメソッド
     /// </summary>
-    /// <param name="collision">�ڐG�����R���C�_�̏��</param>
+    /// <param name="collision">接触したコライダの情報</param>
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // �ڐG�����I�u�W�F�N�g���uGround�v�^�O�����ꍇ
+        // 接触したオブジェクトが「Ground」タグを持つ場合
         if (collision.gameObject.CompareTag("Ground"))
         {
-            // �n�ʂɐڂ��Ă���t���O��true�ɐݒ�
+            // 地面に接しているフラグをtrueに設定
             isGrounded = true;
         }
     }
 
     /// <summary>
-    /// �I�u�W�F�N�g�����̃R���C�_���痣�ꂽ�Ƃ��ɌĂ΂�郁�\�b�h
+    /// オブジェクトが他のコライダから離れたときに呼ばれるメソッド
     /// </summary>
-    /// <param name="collision">���ꂽ�R���C�_�̏��</param>
+    /// <param name="collision">離れたコライダの情報</param>
     private void OnCollisionExit2D(Collision2D collision)
     {
-        // ���ꂽ�I�u�W�F�N�g���uGround�v�^�O�����ꍇ
+        // 離れたオブジェクトが「Ground」タグを持つ場合
         if (collision.gameObject.CompareTag("Ground"))
         {
-            // �n�ʂɐڂ��Ă���t���O��false�ɐݒ�
+            // 地面に接しているフラグをfalseに設定
             isGrounded = false;
         }
     }

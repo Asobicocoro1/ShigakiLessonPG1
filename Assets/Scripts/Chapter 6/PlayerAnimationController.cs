@@ -11,8 +11,6 @@ public class PlayerAnimationController : MonoBehaviour
     private Animator animator;
     // プレイヤーのRigidbody2D
     private Rigidbody2D rb;
-    // プレイヤーの速度
-    private float speed;
     // プレイヤーが地面に接しているかどうか
     private bool isGrounded;
 
@@ -27,12 +25,14 @@ public class PlayerAnimationController : MonoBehaviour
     void Update()
     {
         // プレイヤーの移動速度を取得
-        speed = Input.GetAxis("Horizontal");
+        float speed = Mathf.Abs(Input.GetAxis("Horizontal"));
         // アニメーターに速度を設定
-        animator.SetFloat("Speed", Mathf.Abs(speed));
+        animator.SetFloat("Speed", speed);
 
-        // ジャンプ入力を検知し、地面に接している場合にジャンプ
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        
+
+        // 地面に接していないときにジャンプアニメーションを再生
+        if (!isGrounded)
         {
             animator.SetBool("IsJumping", true);
         }
@@ -60,4 +60,6 @@ public class PlayerAnimationController : MonoBehaviour
         }
     }
 }
+
+
 
