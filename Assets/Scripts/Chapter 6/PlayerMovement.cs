@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    /// <summary>
+   /// <summary>
     /// オブジェクトが他のコライダと接触したときに呼ばれるメソッド
     /// </summary>
     /// <param name="collision">接触したコライダの情報</param>
@@ -68,5 +68,5 @@ public class PlayerMovement : MonoBehaviour
             // 地面に接しているフラグをfalseに設定
             isGrounded = false;
         }
-    }
+    } 
 }

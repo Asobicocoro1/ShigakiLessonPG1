@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 1101493968}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -692,6 +692,7 @@ GameObject:
   - component: {fileID: 1483052552}
   - component: {fileID: 1483052551}
   - component: {fileID: 1483052554}
+  - component: {fileID: 1483052555}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -786,6 +787,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetFrameRate: 60
+--- !u!114 &1483052555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483052550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d71769b18e116a41ad36cfb8981c706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1101493965}
 --- !u!1001 &1601086345
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1126,15 +1140,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4560759338956013717, guid: 24281a1902d72ea4a9ba65e08136959f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4560759338956013717, guid: 24281a1902d72ea4a9ba65e08136959f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12
+      value: 13.3
       objectReference: {fileID: 0}
     - target: {fileID: 4560759338956013717, guid: 24281a1902d72ea4a9ba65e08136959f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4560759338956013717, guid: 24281a1902d72ea4a9ba65e08136959f, type: 3}
       propertyPath: m_LocalRotation.w
