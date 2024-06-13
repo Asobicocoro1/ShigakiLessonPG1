@@ -18,7 +18,7 @@ public class GoalFlag : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             // 次のシーンに遷移
-            SceneManager.LoadScene("NextSceneName");
+            SceneManager.LoadScene("Chapter6_1");
         }
     }
 }
