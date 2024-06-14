@@ -32,13 +32,13 @@ public class PlayerMovement : MonoBehaviour
     {
         // 水平入力を取得
         float moveInput = Input.GetAxis("Horizontal");
-        // 水平入力に応じてプレイヤーを移動
+        // 水平入力に応じてプレイヤーを移動　速度を更新
         rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
 
         // ジャンプ入力を検知し、地面に接している場合にジャンプ
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            rb.velocity = Vector2.up * jumpForce;
+            rb.velocity = Vector2.up * jumpForce;//velocityは速度
         }
     }
 
