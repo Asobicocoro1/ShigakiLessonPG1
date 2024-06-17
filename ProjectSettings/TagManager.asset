@@ -7,6 +7,7 @@ TagManager:
   - arrow
   - test
   - Ground
+  - ChargeTower
   layers:
   - Default
   - TransparentFX
