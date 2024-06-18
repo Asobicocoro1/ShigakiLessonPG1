@@ -56,7 +56,7 @@ gameManager.UpdateHP(currentHP);
 これは、減ったHPをGameManagerに通知し、HPゲージを更新するためのメソッドです。
  */
 
-public class PlayerController : MonoBehaviour
+public class PlayerControllerEX : MonoBehaviour
 {
     public float speed = 10f; // プレイヤの移動速度
     public GameManager_2 gameManager; // GameManagerを参照
