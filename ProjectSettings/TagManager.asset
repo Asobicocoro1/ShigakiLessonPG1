@@ -8,6 +8,11 @@ TagManager:
   - test
   - Ground
   - ChargeTower
+  - ObstacleA
+  - ObstacleB
+  - ObstacleC
+  - Wall
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -44,4 +49,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 4158455967
+    locked: 0
+  - name: Foreground
+    uniqueID: 2747596261
+    locked: 0
+  - name: Items
+    uniqueID: 2747467203
     locked: 0

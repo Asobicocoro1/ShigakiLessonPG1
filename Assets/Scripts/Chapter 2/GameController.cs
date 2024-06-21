@@ -11,7 +11,7 @@ Start() の中で Greet(); を呼び出すことで、ゲームが始まると�
 引数も返り値もないメソッドは、ただ何かの作業をするだけで、外から何か情報を受け取らず（引数なし）、作業の結果を外に出さない（返り値なし）メソッドです。
  */
 
-public class GameController : MonoBehaviour
+public class GameController1 : MonoBehaviour
 {
     void Start()
     {
