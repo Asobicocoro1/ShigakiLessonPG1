@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class FlagController : MonoBehaviour
 {
+    public UIController uiController; // UIコントローラーの参照
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("ゲームクリア！");
-            // ゲームクリア処理をここに追加
+            //uiController.GameClear(); // ゲームクリアの処理を呼び出し
         }
     }
 }
