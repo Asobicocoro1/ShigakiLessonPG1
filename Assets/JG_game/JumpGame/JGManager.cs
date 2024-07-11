@@ -7,15 +7,12 @@ public class JGManager : MonoBehaviour
     public int currentStage = 1;
     public int totalStages = 3;
     public JGUIController uiController;
+    public JGSetup gameSetup;
 
     void Start()
     {
         // 初期化処理
-    }
-
-    void Update()
-    {
-        // ステージ進行管理
+        gameSetup.uiController = uiController;
     }
 
     public void NextStage()
@@ -23,12 +20,18 @@ public class JGManager : MonoBehaviour
         if (currentStage < totalStages)
         {
             currentStage++;
-            // 次のステージをロード
+            LoadStage(currentStage);
         }
         else
         {
             uiController.GameClear();
+            uiController.ShowBackToTitleButton();
         }
+    }
+
+    public void LoadStage(int stage)
+    {
+        gameSetup.SetupStage(stage);
     }
 
     public void GameOver()

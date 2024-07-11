@@ -10,15 +10,11 @@ public class JGGenericButtonController : MonoBehaviour
 
     void Start()
     {
-        // ボタンの参照を取得し、クリックイベントにリスナーを追加
         GetComponent<Button>().onClick.AddListener(OnButtonClick);
     }
 
     void OnButtonClick()
     {
-        if (onClick != null)
-        {
-            onClick.Invoke(); // UnityEventに登録された関数を呼び出し
-        }
+        onClick?.Invoke();
     }
 }

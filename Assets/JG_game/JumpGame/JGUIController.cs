@@ -9,10 +9,13 @@ public class JGUIController : MonoBehaviour
     public GameObject titleScreen;
     public GameObject gameOverScreen;
     public GameObject gameClearScreen;
-    public JGSetup gameSetup; // ゲームセットアップスクリプトの参照
+    public GameObject backToTitleButton; // タイトルに戻るボタン
+    public JGSetup gameSetup;
+    public JGManager gameManager;
 
     void Start()
     {
+        gameSetup.uiController = this;
         ShowTitleScreen();
     }
 
@@ -21,12 +24,14 @@ public class JGUIController : MonoBehaviour
         titleScreen.SetActive(true);
         gameOverScreen.SetActive(false);
         gameClearScreen.SetActive(false);
+        backToTitleButton.SetActive(false); // タイトルに戻るボタンを非表示
     }
 
     public void StartGame()
     {
         titleScreen.SetActive(false);
-        gameSetup.SetupStage1(); // ステージ1を生成
+        gameManager.currentStage = 1; // ステージ1から開始
+        gameManager.LoadStage(gameManager.currentStage);
     }
 
     public void GameOver()
@@ -37,9 +42,22 @@ public class JGUIController : MonoBehaviour
     public void GameClear()
     {
         gameClearScreen.SetActive(true);
-        // 次のステージに進むボタンを有効化し、リスナーを追加
+
+        // Debugログを追加して問題箇所を特定
+        Debug.Log("GameClear method called");
+
+        // 次のステージに進むボタンを取得し、リスナーを追加
         Button nextStageButton = gameClearScreen.GetComponentInChildren<Button>();
-        nextStageButton.onClick.AddListener(() => NextStage());
+        if (nextStageButton == null)
+        {
+            Debug.LogError("Next stage button not found!");
+            return;
+        }
+
+        nextStageButton.onClick.AddListener(() => {
+            gameManager.NextStage();
+            gameClearScreen.SetActive(false); // ゲームクリア画面を非表示
+        });
     }
 
     public void RestartGame()
@@ -51,13 +69,13 @@ public class JGUIController : MonoBehaviour
     {
         if (gameClearScreen.activeSelf && Input.GetKeyDown(KeyCode.Return))
         {
-            NextStage(); // エンターキーが押されたら次のステージに進むs
+            gameManager.NextStage();
+            gameClearScreen.SetActive(false); // ゲームクリア画面を非表示
         }
     }
 
-    public void NextStage()
+    public void ShowBackToTitleButton()
     {
-        gameClearScreen.SetActive(false);
-        //gameSetup.SetupStage2(); // ステージ2を生成
+        backToTitleButton.SetActive(true);
     }
 }
