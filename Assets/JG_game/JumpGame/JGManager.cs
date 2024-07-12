@@ -17,7 +17,7 @@ public class JGManager : MonoBehaviour
 
     public void NextStage()
     {
-        if (currentStage < totalStages)
+        if (currentStage <= totalStages)
         {
             currentStage++;
             LoadStage(currentStage);
